@@ -14,6 +14,7 @@ const INTRO_TEXT_DELAY_MS = 3500;
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const loopMaskRef = useRef<HTMLDivElement>(null);
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
@@ -28,10 +29,22 @@ export default function Hero() {
       setTimeout(() => setContentVisible(true), INTRO_TEXT_DELAY_MS);
     }
 
-    // Loop handler — jumps back to loopStart instead of replaying intro
+    // Loop handler — brief overlay pulse masks the frame seam at reset
     const handleLoop = () => {
-      video.currentTime = HERO_VIDEO_LOOP_START;
-      video.play().catch(() => {});
+      const mask = loopMaskRef.current;
+      if (mask) {
+        mask.style.transition = "opacity 180ms ease-in";
+        mask.style.opacity = "1";
+        video.currentTime = HERO_VIDEO_LOOP_START;
+        video.play().catch(() => {});
+        setTimeout(() => {
+          mask.style.transition = "opacity 320ms ease-out";
+          mask.style.opacity = "0";
+        }, 180);
+      } else {
+        video.currentTime = HERO_VIDEO_LOOP_START;
+        video.play().catch(() => {});
+      }
     };
 
     // timeupdate: fires when LOOP_END is a real finite value
@@ -97,36 +110,55 @@ export default function Hero() {
         preload="auto"
       />
 
-      {/* Multi-layer overlay: keep it readable without killing the video */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1E20]/60 via-[#0A1E20]/30 to-[#0A1E20]/80 z-10" />
-      <div className="absolute inset-0 bg-[#0A1E20]/20 z-10" />
+      {/* Loop seam mask — imperceptible pulse at video reset */}
+      <div
+        ref={loopMaskRef}
+        className="absolute inset-0 z-[5] pointer-events-none"
+        style={{ backgroundColor: "#0A1E20", opacity: 0 }}
+      />
 
-      {/* Hero content — positioned in lower third to avoid logo overlap */}
+      {/* Cinematic overlays — directional, not flat */}
+      {/* Left-weighted: dark on left for text readability, lets video breathe on right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A1E20]/85 via-[#0A1E20]/40 to-[#0A1E20]/5 z-10" />
+      {/* Bottom: seals the lower text zone */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E20]/95 via-[#0A1E20]/20 to-transparent z-10" />
+      {/* Top vignette — preserves header legibility */}
+      <div className="absolute top-0 left-0 right-0 h-[28%] bg-gradient-to-b from-[#0A1E20]/70 to-transparent z-10" />
+
+      {/* Editorial left accent rule */}
+      <div className="absolute left-6 md:left-10 top-[20%] bottom-[20%] w-px bg-gradient-to-b from-transparent via-[#B8A882]/18 to-transparent z-20 hidden lg:block" />
+
       <AnimatePresence>
         {contentVisible && (
-          <div className="absolute inset-0 z-20 flex flex-col justify-end pb-[12vh] sm:pb-[14vh]">
-            <div className="max-w-7xl mx-auto px-6 md:px-10 w-full">
-              <div className="max-w-2xl">
-                {/* Label */}
-                <motion.p
-                  initial={{ opacity: 0, y: 12 }}
+          <div className="absolute inset-0 z-20 flex flex-col justify-end" style={{ paddingBottom: "10vh" }}>
+            <div className="site-container w-full">
+
+              {/* Main content column — left-anchored, controlled text measure */}
+              <div className="max-w-[540px]">
+
+                {/* Eyebrow with inline rule */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0 }}
-                  className="text-label text-[#B8A882] mb-6"
+                  className="flex items-center gap-3 mb-9"
                 >
-                  Dubai · Intellectual Property & Corporate Law
-                </motion.p>
+                  <span className="w-5 h-px bg-[#B8A882]/50 shrink-0" />
+                  <p className="text-label text-[#B8A882]">
+                    Dubai · Intellectual Property & Corporate Law
+                  </p>
+                </motion.div>
 
                 {/* Headline */}
                 <motion.h1
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                  className="font-display text-[clamp(2.6rem,6vw,5.5rem)] font-light leading-[1.0] text-[#E9E9DF] mb-6 tracking-[-0.02em]"
+                  className="hero-headline font-display text-[clamp(2.6rem,6vw,5.5rem)] font-light leading-[1.0] text-[#E9E9DF] mb-9 tracking-[-0.02em]"
                 >
                   The firm brands call
                   <br />
-                  <em className="italic text-[#B8A882] not-italic font-normal" style={{ fontStyle: "italic" }}>
+                  <em style={{ fontStyle: "italic", color: "#B8A882" }}>
                     when the stakes are real.
                   </em>
                 </motion.h1>
@@ -136,47 +168,58 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                  className="text-[#E9E9DF]/65 text-base md:text-lg leading-relaxed max-w-xl mb-10"
+                  className="hero-paragraph text-[#E9E9DF]/60 text-base md:text-[1.0625rem] leading-relaxed max-w-[460px] mb-12"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   Elite advises established and emerging businesses on intellectual property, trademark, and corporate legal strategy — with the commercial fluency that premium brands demand.
                 </motion.p>
 
-                {/* CTAs */}
+                {/* CTAs — primary dominant, secondary recedes on mobile */}
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <button
-                    onClick={scrollToConsult}
-                    className="text-label text-[#0A1E20] bg-[#E9E9DF] px-7 py-4 hover:bg-[#B8A882] transition-all duration-300 cursor-pointer"
-                  >
+                  <button onClick={scrollToConsult} className="btn-primary">
                     Request Consultation
                   </button>
-                  <button
-                    onClick={scrollToServices}
-                    className="text-label text-[#E9E9DF] border border-[#E9E9DF]/30 px-7 py-4 hover:border-[#B8A882] hover:text-[#B8A882] transition-all duration-300 cursor-pointer"
-                  >
+                  <button onClick={scrollToServices} className="btn-ghost-secondary">
                     Explore Services
                   </button>
                 </motion.div>
               </div>
 
-              {/* Scroll indicator */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 1 }}
-                className="absolute bottom-8 right-6 md:right-10 flex flex-col items-center gap-2"
-              >
-                <span className="text-label text-[#E9E9DF]/30" style={{ writingMode: "vertical-rl" }}>
-                  Scroll
-                </span>
-                <div className="w-px h-12 bg-gradient-to-b from-[#B8A882]/40 to-transparent" />
-              </motion.div>
             </div>
+
+            {/* Right decorative column — visible only on xl+ */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 1.4 }}
+              className="absolute right-10 bottom-[14vh] hidden xl:flex flex-col items-center gap-3"
+            >
+              <div className="w-px h-14 bg-gradient-to-b from-[#B8A882]/28 to-transparent" />
+              <span
+                className="text-label text-[#E9E9DF]/20"
+                style={{ writingMode: "vertical-rl", letterSpacing: "0.22em" }}
+              >
+                Dubai · GCC
+              </span>
+            </motion.div>
+
+            {/* Scroll indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="absolute bottom-7 right-8 md:right-12 flex flex-col items-center gap-2"
+            >
+              <span className="text-label text-[#E9E9DF]/25" style={{ writingMode: "vertical-rl" }}>
+                Scroll
+              </span>
+              <div className="w-px h-10 bg-gradient-to-b from-[#B8A882]/35 to-transparent" />
+            </motion.div>
           </div>
         )}
       </AnimatePresence>

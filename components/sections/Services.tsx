@@ -60,6 +60,15 @@ const services = [
     detail: "Company formation · Commercial contracts · Licensing · Partner agreements · Regulatory compliance",
     image: "/images/luxury-corridor.png",
   },
+  {
+    id: "litigation",
+    number: "07",
+    title: "Civil and Criminal",
+    short: "Strategic litigation when your rights are on the line.",
+    body: "Elite handles civil disputes and criminal infringement matters with precision and authority — from IP-related litigation and counterfeit prosecution to court proceedings across UAE jurisdictions.",
+    detail: "Civil litigation · Criminal prosecution · IP disputes · Court proceedings · Enforcement strategy",
+    image: "/images/gold-seal.png",
+  },
 ];
 
 export default function Services() {
@@ -68,10 +77,17 @@ export default function Services() {
   const activeService = services.find((s) => s.id === activeId);
 
   return (
-    <section id="services" className="relative bg-[#0A1E20]">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+    <section id="services" className="relative bg-[#0A1E20] overflow-hidden">
+      {/* Subtle paper texture — adds material depth without distracting */}
+      <div
+        className="absolute inset-0 opacity-[0.035] pointer-events-none"
+        style={{ backgroundImage: "url('/images/ivory-paper.png')", backgroundSize: "cover" }}
+      />
+      {/* Bottom atmosphere fade into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#132D30]/30 to-transparent pointer-events-none" />
+      <div className="site-container section-pad">
         {/* Header */}
-        <div className="mb-16 md:mb-24">
+        <div className="mb-20 md:mb-28">
           <FadeIn>
             <p className="text-label text-[#B8A882] mb-5">Legal Services</p>
           </FadeIn>
@@ -92,7 +108,7 @@ export default function Services() {
         </div>
 
         {/* Service grid with expandable detail */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-[#B8A882]/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-[#B8A882]/15">
           {services.map((service, i) => (
             <FadeIn key={service.id} delay={i * 0.06}>
               <button

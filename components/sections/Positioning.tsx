@@ -27,17 +27,26 @@ const pillars = [
 export default function Positioning() {
   return (
     <section className="relative bg-[#132D30] overflow-hidden">
-      {/* Top texture strip */}
+      {/* Marble atmosphere — full section, layered */}
       <div
-        className="absolute top-0 left-0 right-0 h-64 opacity-10 pointer-events-none"
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
         style={{
           backgroundImage: "url('/images/dark-marble.png')",
           backgroundSize: "cover",
-          backgroundPosition: "top center",
+          backgroundPosition: "center",
+        }}
+      />
+      {/* Paper warmth — lower half only */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-1/2 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/ivory-paper.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "bottom center",
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+      <div className="site-container section-pad">
         {/* Section header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 mb-20 md:mb-28">
           <FadeIn>
@@ -54,7 +63,7 @@ export default function Positioning() {
           <FadeIn delay={0.15}>
             <div className="flex flex-col justify-end">
               <p className="text-[#E9E9DF]/55 leading-relaxed text-[1.0625rem]" style={{ fontFamily: "var(--font-body)" }}>
-                Elite was founded on the belief that premium brands deserve IP and legal advisory that matches their standard. Not a generalist firm. Not a volume practice. A focused, commercial partner for businesses where brand equity and intellectual assets are the core of what they have built.
+                Premium brands deserve IP counsel that matches their standard. Not a generalist firm. Not a volume practice. A focused, commercial partner for businesses where brand equity is the core of what they have built.
               </p>
               <div className="mt-8">
                 <span className="accent-line" />
@@ -80,23 +89,32 @@ export default function Positioning() {
           ))}
         </div>
 
-        {/* Visual anchor: wax seal image */}
+        {/* Visual anchor: editorial quote block */}
         <FadeIn direction="none">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 bg-[#0A1E20]/40 border border-[#B8A882]/10 p-8 md:p-12">
-            <div className="shrink-0 w-28 h-28 md:w-36 md:h-36 relative overflow-hidden rounded-full border border-[#B8A882]/20">
+          <div className="relative flex flex-col md:flex-row items-center gap-8 md:gap-16 bg-[#0A1E20]/50 border border-[#B8A882]/15 p-8 md:p-14 overflow-hidden">
+            {/* Faint ivory paper texture inside the quote block */}
+            <div
+              className="absolute inset-0 opacity-[0.04] pointer-events-none"
+              style={{ backgroundImage: "url('/images/ivory-paper.png')", backgroundSize: "cover" }}
+            />
+            {/* Gold accent on the left edge */}
+            <div className="absolute left-0 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-[#B8A882]/40 to-transparent" />
+            <div className="relative shrink-0 w-32 h-32 md:w-44 md:h-44 overflow-hidden border border-[#B8A882]/15">
               <Image
                 src="/images/gold-seal.png"
                 alt="Elite IP — Premium Legal Authority"
                 fill
-                className="object-cover"
-                sizes="144px"
+                className="object-cover opacity-90"
+                sizes="176px"
               />
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#0A1E20]/30" />
             </div>
-            <div>
-              <p className="font-display text-2xl md:text-3xl font-light text-[#E9E9DF] mb-3 leading-snug">
+            <div className="relative">
+              <span className="accent-line mb-6 block" />
+              <p className="font-display text-2xl md:text-[1.875rem] font-light text-[#E9E9DF] mb-4 leading-snug tracking-[-0.01em]">
                 "Protecting what you have built is not a formality — it is a strategic asset."
               </p>
-              <p className="text-label text-[#B8A882]/60">Elite IP · Dubai</p>
+              <p className="text-label text-[#B8A882]/55">Elite IP · Dubai</p>
             </div>
           </div>
         </FadeIn>
