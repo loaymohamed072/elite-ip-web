@@ -108,12 +108,12 @@ export default function Services() {
         </div>
 
         {/* Service grid with expandable detail */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-[#B8A882]/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-[#B8A882]/15">
           {services.map((service, i) => (
             <FadeIn key={service.id} delay={i * 0.06}>
               <button
                 onClick={() => setActiveId(activeId === service.id ? null : service.id)}
-                className={`w-full text-left p-8 md:p-10 border-b border-r-0 md:border-r border-[#B8A882]/15 group transition-all duration-500 cursor-pointer ${
+                className={`service-card group ${
                   activeId === service.id
                     ? "bg-[#132D30]"
                     : "bg-transparent hover:bg-[#132D30]/40"

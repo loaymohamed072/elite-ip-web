@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Force Tailwind v4 to scan all component/page files */
+@source "../components/**/*.tsx";
+@source "../app/**/*.tsx";
+
 @theme inline {
   --color-green: #132D30;
   --color-green-deep: #0A1E20;
@@ -26,6 +30,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* viewport-level containment — prevents scrollbar-width shift on Windows */
 }
 
 body {
@@ -34,6 +39,8 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 ::selection {
@@ -74,6 +81,180 @@ input, textarea, select {
   outline: none;
   -webkit-appearance: none;
   appearance: none;
+}
+
+/* ── Layout guarantees — bypasses Tailwind scanner for critical spacing ── */
+/* Replaces: max-w-7xl mx-auto px-6 md:px-10 */
+.site-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .site-container { padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+
+/* Replaces: py-24 md:py-36 */
+.section-pad {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 768px) {
+  .section-pad { padding-top: 9rem; padding-bottom: 9rem; }
+}
+
+/* Replaces: pt-24 md:pt-36 pb-16 md:pb-20 (Trust section) */
+.section-pad-trust {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .section-pad-trust { padding-top: 9rem; padding-bottom: 5rem; }
+}
+
+/* Replaces: py-16 md:py-20 (Footer) */
+.footer-pad {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .footer-pad { padding-top: 5rem; padding-bottom: 5rem; }
+}
+
+/* Hard reset for buttons — browser UA stylesheet must not bleed through */
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+/* Service card — named class bypasses Turbopack scanner issue with button padding */
+.service-card {
+  width: 100%;
+  text-align: left;
+  padding: 2rem 2.5rem;
+  border-bottom: 1px solid rgba(184, 168, 130, 0.15);
+  border-right: 1px solid rgba(184, 168, 130, 0.15);
+  transition: background-color 0.5s ease;
+}
+@media (min-width: 768px) {
+  .service-card { padding: 2.5rem 3rem; }
+}
+
+/* Named button classes — defined here so they never depend on Tailwind class scanning */
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background-color: #E9E9DF;
+  color: #0A1E20;
+  padding: 1rem 1.75rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background-color: #B8A882;
+  color: #0A1E20;
+}
+
+.btn-ghost {
+  display: inline-block;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E9E9DF;
+  background: transparent;
+  border: 1px solid rgba(233, 233, 223, 0.30);
+  padding: 1rem 1.75rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  border-color: #B8A882;
+  color: #B8A882;
+}
+
+.btn-header {
+  display: inline-block;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E9E9DF;
+  background-color: #132D30;
+  border: 1px solid rgba(184, 168, 130, 0.30);
+  padding: 0.625rem 1.25rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-header:hover {
+  background-color: #1C4045;
+  border-color: rgba(184, 168, 130, 0.60);
+}
+
+/* ── Hero mobile refinements — mobile-only spacing + CTA hierarchy ── */
+@media (max-width: 639px) {
+  .hero-headline { margin-bottom: 2.5rem; }
+  .hero-paragraph {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    max-width: 18rem;
+    margin-bottom: 3rem;
+  }
+}
+
+/* "Explore Services" — text-link weight on mobile, full ghost on sm+ */
+.btn-ghost-secondary {
+  display: inline-block;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(233, 233, 223, 0.40);
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 168, 130, 0.20);
+  text-underline-offset: 4px;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  cursor: pointer;
+}
+.btn-ghost-secondary:hover {
+  color: #B8A882;
+  text-decoration-color: rgba(184, 168, 130, 0.55);
+}
+@media (min-width: 640px) {
+  .btn-ghost-secondary {
+    color: #E9E9DF;
+    border: 1px solid rgba(233, 233, 223, 0.30);
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+  }
+  .btn-ghost-secondary:hover {
+    border-color: #B8A882;
+    color: #B8A882;
+    text-decoration: none;
+  }
 }
 
 @keyframes fadeUp {
