@@ -36,7 +36,7 @@ export default function Process() {
     <section id="process" className="relative bg-[#0A1E20] overflow-hidden">
       <div className="site-container section-pad">
         {/* Header */}
-        <div className="mb-20 md:mb-28">
+        <div className="header-gap-lg">
           <FadeIn>
             <p className="text-label text-[#B8A882] mb-5">How We Work</p>
           </FadeIn>

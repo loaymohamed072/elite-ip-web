@@ -224,6 +224,14 @@ button {
   }
 }
 
+/* Section header-to-content gaps — named to bypass Turbopack scanner */
+.header-gap-lg {
+  margin-bottom: 5rem;
+}
+@media (min-width: 768px) {
+  .header-gap-lg { margin-bottom: 8rem; }
+}
+
 /* "Explore Services" — text-link weight on mobile, full ghost on sm+ */
 .btn-ghost-secondary {
   display: inline-block;
