@@ -163,7 +163,7 @@ export default function Services() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#132D30]/50 border border-[#B8A882]/10 overflow-hidden"
+              className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#132D30] overflow-hidden"
             >
               <div className="p-10 md:p-14">
                 <p className="text-label text-[#B8A882] mb-4">{activeService.number} — {activeService.title}</p>

@@ -43,7 +43,7 @@ export default function Trust() {
       {/* Header + reasons grid — reduced bottom padding to flow into the skyline */}
       <div className="site-container section-pad-trust relative">
         {/* Header */}
-        <div className="mb-16 md:mb-24" style={{ textAlign: "center", maxWidth: "48rem", marginLeft: "auto", marginRight: "auto" }}>
+        <div className="mb-20 md:mb-32" style={{ textAlign: "center", maxWidth: "48rem", marginLeft: "auto", marginRight: "auto" }}>
           <FadeIn>
             <p className="text-label text-[#B8A882] mb-5">Why Elite</p>
           </FadeIn>
