@@ -33,8 +33,8 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="relative bg-[#0A1E20]">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+    <section id="process" className="relative bg-[#0A1E20] overflow-hidden">
+      <div className="site-container section-pad">
         {/* Header */}
         <div className="mb-16 md:mb-20">
           <FadeIn>

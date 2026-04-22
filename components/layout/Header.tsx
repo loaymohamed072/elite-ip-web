@@ -36,7 +36,7 @@ export default function Header() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
+        <div className="site-container h-[72px] flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <Image
@@ -66,7 +66,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-4">
             <button
               onClick={() => handleNav("#consultation")}
-              className="text-label text-[#E9E9DF] bg-[#132D30] border border-[#B8A882]/30 px-5 py-2.5 hover:bg-[#1C4045] hover:border-[#B8A882]/60 transition-all duration-300 cursor-pointer"
+              className="btn-header"
             >
               Request Consultation
             </button>
@@ -119,7 +119,8 @@ export default function Header() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
                 onClick={() => handleNav("#consultation")}
-                className="mt-4 text-label text-[#E9E9DF] bg-[#132D30] border border-[#B8A882]/30 px-6 py-4 text-left cursor-pointer"
+                className="btn-header mt-4 text-left"
+                style={{ padding: "1rem 1.5rem" }}
               >
                 Request Consultation
               </motion.button>

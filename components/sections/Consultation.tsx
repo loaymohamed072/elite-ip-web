@@ -105,7 +105,7 @@ export default function Consultation() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+      <div className="site-container section-pad relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-20 items-start">
           {/* Left: copy */}
           <div className="lg:sticky lg:top-28">
@@ -312,7 +312,8 @@ export default function Consultation() {
                     <button
                       type="submit"
                       disabled={status === "submitting"}
-                      className="text-label text-[#0A1E20] bg-[#E9E9DF] px-8 py-4 hover:bg-[#B8A882] transition-all duration-300 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+                      className="btn-primary"
+                      style={status === "submitting" ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                     >
                       {status === "submitting" ? "Sending..." : "Request Consultation"}
                     </button>

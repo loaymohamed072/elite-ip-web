@@ -26,11 +26,11 @@ const team = [
 
 export default function Team() {
   return (
-    <section id="team" className="relative bg-[#132D30]">
+    <section id="team" className="relative bg-[#132D30] overflow-hidden">
       {/* Top accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B8A882]/20 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+      <div className="site-container section-pad">
         {/* Header */}
         <div className="mb-16 md:mb-24">
           <FadeIn>

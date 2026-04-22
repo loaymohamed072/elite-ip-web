@@ -36,13 +36,18 @@ const sectors = [
 
 export default function Sectors() {
   return (
-    <section id="sectors" className="relative bg-[#0A1E20]">
+    <section id="sectors" className="relative bg-[#0A1E20] overflow-hidden">
+      {/* Green textile texture — atmospheric material layer */}
+      <div
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{ backgroundImage: "url('/images/green-textile.png')", backgroundSize: "cover" }}
+      />
       {/* Divider */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <div className="site-container">
         <div className="divider-gold" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+      <div className="site-container section-pad">
         {/* Header */}
         <div className="mb-16 md:mb-24">
           <FadeIn>
