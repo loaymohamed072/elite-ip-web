@@ -64,7 +64,7 @@ export default function Trust() {
                 <div className="flex items-start gap-4">
                   <span className="mt-2 w-1 h-1 rounded-full bg-[#B8A882] shrink-0" />
                   <div>
-                    <h3 className="font-display text-xl text-[#E9E9DF] mb-2 group-hover:text-[#B8A882] transition-colors duration-300">
+                    <h3 className="font-display text-xl text-[#E9E9DF] mb-3 group-hover:text-[#B8A882] transition-colors duration-300">
                       {r.title}
                     </h3>
                     <p className="text-sm text-[#E9E9DF]/45 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>

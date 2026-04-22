@@ -168,7 +168,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                  className="hero-paragraph text-[#E9E9DF]/60 text-base md:text-[1.0625rem] leading-relaxed max-w-[460px] mb-12"
+                  className="hero-paragraph text-[#E9E9DF]/60 text-base md:text-[1.0625rem] leading-relaxed max-w-[460px] mb-16"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   Elite advises established and emerging businesses on intellectual property, trademark, and corporate legal strategy — with the commercial fluency that premium brands demand.

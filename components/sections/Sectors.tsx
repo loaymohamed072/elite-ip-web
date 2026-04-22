@@ -63,7 +63,7 @@ export default function Sectors() {
         </div>
 
         {/* Sectors grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#B8A882]/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {sectors.map((sector, i) => (
             <FadeIn key={sector.name} delay={i * 0.07}>
               <div className="bg-[#0A1E20] p-8 md:p-10 group hover:bg-[#132D30]/60 transition-colors duration-500 h-full">

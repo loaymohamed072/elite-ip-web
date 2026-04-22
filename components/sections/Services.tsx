@@ -43,17 +43,8 @@ const services = [
     image: "/images/gold-seal.png",
   },
   {
-    id: "brand",
-    number: "05",
-    title: "Brand Protection Strategy",
-    short: "A proactive framework for long-term brand security.",
-    body: "Beyond individual registrations, Elite designs comprehensive brand protection strategies — mapping IP assets, identifying vulnerabilities, and building legal infrastructure that scales with your brand.",
-    detail: "IP audits · Risk mapping · Portfolio management · Brand monitoring · Strategy sessions",
-    image: "/images/green-textile.png",
-  },
-  {
     id: "corporate",
-    number: "06",
+    number: "05",
     title: "Corporate Legal Services",
     short: "The structural legal support growing businesses need.",
     body: "From commercial contracts and business formation to licensing agreements and regulatory compliance, Elite provides the corporate legal framework that protects your business from the inside out.",
@@ -62,7 +53,7 @@ const services = [
   },
   {
     id: "litigation",
-    number: "07",
+    number: "06",
     title: "Civil and Criminal",
     short: "Strategic litigation when your rights are on the line.",
     body: "Elite handles civil disputes and criminal infringement matters with precision and authority — from IP-related litigation and counterfeit prosecution to court proceedings across UAE jurisdictions.",
