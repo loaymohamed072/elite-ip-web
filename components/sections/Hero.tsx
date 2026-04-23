@@ -147,21 +147,29 @@ export default function Hero() {
               {/* Main content column — left-anchored, controlled text measure */}
               <div className="max-w-[540px]">
 
-                {/* Eyebrow with inline rule */}
+                {/* Eyebrow — logo on mobile, text on desktop */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0 }}
                   className="mb-9"
                 >
+                  {/* Mobile: logo */}
                   <Image
                     src="/images/elite-logo-nobg.png"
                     alt="Elite IP"
                     width={320}
                     height={120}
-                    className="w-[220px] md:w-[300px] h-auto"
+                    className="w-[220px] h-auto md:hidden"
                     priority
                   />
+                  {/* Desktop: original eyebrow text */}
+                  <div className="hidden md:flex items-center gap-3">
+                    <span className="w-5 h-px bg-[#B8A882]/50 shrink-0" />
+                    <p className="text-label text-[#B8A882]">
+                      Dubai · Intellectual Property & Corporate Law
+                    </p>
+                  </div>
                 </motion.div>
 
                 {/* Headline */}
