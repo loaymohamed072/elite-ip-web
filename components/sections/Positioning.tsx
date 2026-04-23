@@ -78,7 +78,7 @@ export default function Positioning() {
             <FadeIn key={pillar.number} delay={i * 0.08}>
               <div className="group border-t border-[#B8A882]/20 pt-6 hover:border-[#B8A882]/50 transition-colors duration-500">
                 <p className="text-label text-[#B8A882]/50 mb-4">{pillar.number}</p>
-                <h3 className="font-display text-xl text-[#E9E9DF] mb-3 leading-snug">
+                <h3 className="font-display text-xl text-[#E9E9DF] mb-4 leading-snug">
                   {pillar.title}
                 </h3>
                 <p className="text-sm text-[#E9E9DF]/50 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>

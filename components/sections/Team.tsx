@@ -70,7 +70,7 @@ export default function Team() {
                 {/* Info */}
                 <div className="p-8">
                   <p className="text-label text-[#B8A882]/50 mb-3">{member.specialty}</p>
-                  <h3 className="font-display text-2xl font-light text-[#E9E9DF] mb-1">
+                  <h3 className="font-display text-2xl font-light text-[#E9E9DF] mb-2">
                     {member.name}
                   </h3>
                   <p className="text-sm text-[#B8A882] mb-5" style={{ fontFamily: "var(--font-body)" }}>
