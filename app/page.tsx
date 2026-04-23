@@ -26,8 +26,8 @@ export default function Home() {
         <Process />
         <Trust />
         <FAQ />
-        <Insights />
         <FinalCTA />
+        <Insights />
       </main>
       <Footer />
     </>

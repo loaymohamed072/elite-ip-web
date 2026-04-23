@@ -80,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <Header />
-      <main className="bg-[#0A1E20] min-h-screen pt-[72px]">
+      <main style={{ backgroundColor: "#0A1E20", minHeight: "100vh", paddingTop: "72px" }}>
         {/* Article header */}
         <section className="site-container pt-16 md:pt-24 pb-12 md:pb-16 border-b border-[#B8A882]/10">
           <FadeIn>

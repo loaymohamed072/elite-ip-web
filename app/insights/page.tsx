@@ -26,7 +26,7 @@ export default function InsightsPage() {
   return (
     <>
       <Header />
-      <main className="bg-[#0A1E20] min-h-screen pt-[72px]">
+      <main style={{ backgroundColor: "#0A1E20", minHeight: "100vh", paddingTop: "72px" }}>
         {/* Hero */}
         <section className="site-container section-pad border-b border-[#B8A882]/10">
           <FadeIn>

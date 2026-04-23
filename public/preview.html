@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite IP — Intellectual Property & Corporate Legal Advisory, Dubai</title>
+  <meta name="description" content="Elite advises premium brands, luxury ventures, and high-value businesses on intellectual property, trademark, and corporate legal strategy across the Gulf region." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-x: hidden; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { overflow-x: hidden; width: 100%; max-width: 100%; background: #0A1E20; color: #E9E9DF; font-family: 'DM Sans', system-ui, sans-serif; line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    button, input, textarea, select { font-family: inherit; outline: none; -webkit-appearance: none; appearance: none; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Variables ── */
+    :root {
+      --green: #132D30;
+      --green-deep: #0A1E20;
+      --green-light: #1C4045;
+      --ivory: #E9E9DF;
+      --ivory-warm: #F2F0E8;
+      --gold: #B8A882;
+      --stone: #8A857A;
+      --max: 1280px;
+      --px: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    /* ── Typography ── */
+    .display { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--px);
+    }
+    section { position: relative; }
+
+    /* ── Fade-in animation ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up[data-delay="1"] { transition-delay: 0.08s; }
+    .fade-up[data-delay="2"] { transition-delay: 0.16s; }
+    .fade-up[data-delay="3"] { transition-delay: 0.24s; }
+    .fade-up[data-delay="4"] { transition-delay: 0.32s; }
+    .fade-up[data-delay="5"] { transition-delay: 0.40s; }
+
+    /* ── Divider ── */
+    .divider-gold {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+      opacity: 0.25;
+    }
+    .accent-line { display: block; width: 40px; height: 1px; background: var(--gold); }
+
+    /* ══════════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════════ */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      transition: background 0.5s ease, border-color 0.5s ease;
+    }
+    #site-header.scrolled {
+      background: rgba(10,30,32,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,168,130,0.1);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .header-logo img { height: 36px; width: auto; object-fit: contain; }
+    .header-nav { display: flex; align-items: center; gap: 2rem; }
+    .header-nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(233,233,223,0.6);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    .header-nav button:hover { color: var(--gold); }
+    .btn-header {
+      background: var(--green);
+      border: 1px solid rgba(184,168,130,0.3);
+      color: var(--ivory);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.625rem 1.25rem;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-header:hover { background: var(--green-light); border-color: rgba(184,168,130,0.6); }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--ivory);
+      transition: all 0.3s ease;
+    }
+    .menu-toggle span:nth-child(2) { width: 16px; }
+
+    /* Mobile nav overlay */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: var(--green-deep);
+      flex-direction: column;
+      padding-top: 72px;
+    }
+    #mobile-menu.open { display: flex; }
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 1.5rem;
+      gap: 2rem;
+    }
+    .mobile-nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--ivory);
+      transition: color 0.3s ease;
+    }
+    .mobile-nav button:hover { color: var(--gold); }
+    .mobile-nav .btn-mobile {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: var(--green);
+      border: 1px solid rgba(184,168,130,0.3);
+      padding: 1rem 1.5rem;
+      text-align: left;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 767px) {
+      .header-nav, .btn-header { display: none; }
+      .menu-toggle { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    #hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,30,32,0.6) 0%, rgba(10,30,32,0.3) 50%, rgba(10,30,32,0.8) 100%);
+      z-index: 1;
+    }
+    .hero-overlay-2 {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,30,32,0.2);
+      z-index: 1;
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: clamp(5rem, 12vh, 9rem);
+    }
+    .hero-label {
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+    }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--ivory);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      color: rgba(233,233,223,0.65);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.65s forwards;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--ivory);
+      color: var(--green-deep);
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover { background: var(--gold); }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--ivory);
+      border: 1px solid rgba(233,233,223,0.3);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      right: var(--px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1s forwards;
+      z-index: 2;
+    }
+    .hero-scroll span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(233,233,223,0.3);
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(184,168,130,0.4), transparent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ══════════════════════════════════════════
+       POSITIONING
+    ══════════════════════════════════════════ */
+    #positioning {
+      background: var(--green);
+      overflow: hidden;
+    }
+    .section-pad { padding: clamp(5rem, 10vw, 9rem) 0; }
+    .section-header-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      margin-bottom: clamp(4rem, 8vw, 7rem);
+      align-items: start;
+    }
+    @media (max-width: 767px) { .section-header-2col { grid-template-columns: 1fr; } }
+
+    .section-label { color: var(--gold); margin-bottom: 1.5rem; }
+    .section-h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--ivory);
+      letter-spacing: -0.02em;
+    }
+    .section-h2 em { font-style: italic; }
+    .section-desc { color: rgba(233,233,223,0.55); line-height: 1.75; font-size: 1.0625rem; }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1.5rem, 3vw, 1.5rem);
+      margin-bottom: clamp(4rem, 8vw, 7rem);
+    }
+    @media (max-width: 1023px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .pillars { grid-template-columns: 1fr; } }
+
+    .pillar {
+      border-top: 1px solid rgba(184,168,130,0.2);
+      padding-top: 1.5rem;
+      transition: border-color 0.5s ease;
+    }
+    .pillar:hover { border-color: rgba(184,168,130,0.5); }
+    .pillar-num { color: rgba(184,168,130,0.5); margin-bottom: 1rem; }
+    .pillar-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .pillar-body { font-size: 0.875rem; color: rgba(233,233,223,0.5); line-height: 1.7; }
+
+    .seal-block {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: clamp(2rem, 4vw, 4rem);
+      background: rgba(10,30,32,0.4);
+      border: 1px solid rgba(184,168,130,0.1);
+      padding: clamp(2rem, 3vw, 3rem);
+    }
+    @media (max-width: 767px) { .seal-block { flex-direction: column; text-align: center; } }
+    .seal-img {
+      width: clamp(100px, 10vw, 144px);
+      height: clamp(100px, 10vw, 144px);
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(184,168,130,0.2);
+      flex-shrink: 0;
+    }
+    .seal-img img { width: 100%; height: 100%; object-fit: cover; }
+    .seal-quote {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+    .seal-attr { color: rgba(184,168,130,0.6); }
+
+    /* ══════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════ */
+    #services {
+      background: var(--green-deep);
+      overflow: hidden;
+    }
+    .services-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: clamp(3rem, 6vw, 6rem);
+    }
+    @media (min-width: 768px) {
+      .services-header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    }
+    .services-hint { color: rgba(233,233,223,0.4); font-size: 0.875rem; max-width: 280px; line-height: 1.6; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(184,168,130,0.15);
+    }
+    @media (max-width: 1023px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .services-grid { grid-template-columns: 1fr; } }
+
+    .service-card {
+      border-bottom: 1px solid rgba(184,168,130,0.15);
+      border-right: 1px solid rgba(184,168,130,0.15);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      cursor: pointer;
+      background: transparent;
+      text-align: left;
+      transition: background 0.5s ease;
+      width: 100%;
+    }
+    @media (max-width: 600px) { .service-card { border-right: none; } }
+    .service-card:hover, .service-card.active { background: rgba(19,45,48,0.8); }
+    .service-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem; }
+    .service-num { color: rgba(184,168,130,0.4); }
+    .service-toggle {
+      width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(184,168,130,0.3);
+      color: var(--gold);
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .service-card.active .service-toggle { transform: rotate(45deg); }
+    .service-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      font-weight: 300;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+    .service-card:hover .service-title, .service-card.active .service-title { color: var(--gold); }
+    .service-short { font-size: 0.875rem; color: rgba(233,233,223,0.45); line-height: 1.7; }
+    .service-detail {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease;
+      opacity: 0;
+    }
+    .service-detail.open { max-height: 400px; opacity: 1; }
+    .service-detail-inner {
+      padding-top: 1.25rem;
+      margin-top: 1.25rem;
+      border-top: 1px solid rgba(184,168,130,0.15);
+    }
+    .service-body { font-size: 0.875rem; color: rgba(233,233,223,0.6); line-height: 1.7; margin-bottom: 1rem; }
+    .service-tags { font-size: 0.75rem; color: rgba(184,168,130,0.5); }
+
+    /* ══════════════════════════════════════════
+       CONSULTATION
+    ══════════════════════════════════════════ */
+    #consultation {
+      background: var(--green);
+      overflow: hidden;
+    }
+    .consultation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 5vw, 5rem);
+      align-items: start;
+    }
+    @media (max-width: 1023px) { .consultation-grid { grid-template-columns: 1fr; } }
+    .consult-sticky { position: sticky; top: 7rem; }
+    .trust-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; }
+    .trust-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 0.55rem; }
+    .trust-title { font-size: 0.875rem; color: var(--ivory); font-weight: 500; margin-bottom: 0.2rem; }
+    .trust-desc { font-size: 0.75rem; color: rgba(233,233,223,0.4); }
+
+    .wa-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(233,233,223,0.6);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+      transition: color 0.3s ease;
+    }
+    .wa-link:hover { color: var(--gold); }
+
+    /* Form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-bottom: 2rem; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    .form-field { margin-bottom: 2rem; }
+    .field-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(184,168,130,0.2);
+      padding: 0.875rem 0;
+      color: var(--ivory);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      transition: border-color 0.3s ease;
+    }
+    .field-input:focus { border-bottom-color: var(--gold); }
+    .field-input::placeholder { color: rgba(233,233,223,0.3); }
+    .field-select {
+      width: 100%;
+      background: var(--green);
+      border: 1px solid rgba(184,168,130,0.2);
+      padding: 0.875rem 1rem;
+      color: var(--ivory);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+    .field-select:focus { border-color: var(--gold); }
+    .field-select option { background: var(--green); color: var(--ivory); }
+    .field-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(184,168,130,0.2);
+      padding: 0.875rem 0;
+      color: var(--ivory);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      resize: none;
+      transition: border-color 0.3s ease;
+    }
+    .field-textarea:focus { border-bottom-color: var(--gold); }
+    .field-textarea::placeholder { color: rgba(233,233,223,0.3); }
+    .form-submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; padding-top: 0.5rem; }
+    .btn-submit {
+      background: var(--ivory);
+      color: var(--green-deep);
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      transition: background 0.3s ease;
+    }
+    .btn-submit:hover { background: var(--gold); }
+    .form-privacy { font-size: 0.75rem; color: rgba(233,233,223,0.3); max-width: 180px; line-height: 1.5; }
+    .form-success {
+      display: none;
+      border: 1px solid rgba(184,168,130,0.2);
+      padding: 3rem;
+      text-align: center;
+    }
+    .success-icon {
+      width: 56px; height: 56px;
+      border: 1px solid rgba(184,168,130,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .success-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.75rem; }
+    .success-desc { font-size: 0.875rem; color: rgba(233,233,223,0.5); line-height: 1.7; }
+
+    /* ══════════════════════════════════════════
+       SECTORS
+    ══════════════════════════════════════════ */
+    #sectors {
+      background: var(--green-deep);
+      overflow: hidden;
+    }
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(184,168,130,0.1);
+    }
+    @media (max-width: 1023px) { .sectors-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .sectors-grid { grid-template-columns: 1fr; } }
+    .sector-card {
+      background: var(--green-deep);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      transition: background 0.5s ease;
+    }
+    .sector-card:hover { background: rgba(19,45,48,0.6); }
+    .sector-img {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .sector-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .sector-card:hover .sector-img img { opacity: 0.7; transform: scale(1.03); }
+    .sector-img-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--green-deep), transparent);
+    }
+    .sector-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+      transition: color 0.3s ease;
+    }
+    .sector-card:hover .sector-title { color: var(--gold); }
+    .sector-desc { font-size: 0.875rem; color: rgba(233,233,223,0.45); line-height: 1.7; }
+
+    .sectors-footer { margin-top: 3rem; display: flex; align-items: flex-start; gap: 1rem; max-width: 600px; }
+    .sectors-footer-text { font-size: 0.875rem; color: rgba(233,233,223,0.35); line-height: 1.7; }
+
+    /* ══════════════════════════════════════════
+       TEAM
+    ══════════════════════════════════════════ */
+    #team {
+      background: var(--green);
+      overflow: hidden;
+    }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); }
+    @media (max-width: 767px) { .team-grid { grid-template-columns: 1fr; } }
+    .team-card {
+      border: 1px solid rgba(184,168,130,0.1);
+      background: rgba(10,30,32,0.2);
+      transition: border-color 0.5s ease, background 0.5s ease;
+    }
+    .team-card:hover { border-color: rgba(184,168,130,0.3); background: rgba(10,30,32,0.4); }
+    .team-portrait {
+      height: 280px;
+      background: rgba(10,30,32,0.6);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .team-initials-circle {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,168,130,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .team-initials {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: rgba(184,168,130,0.6);
+    }
+    .team-portrait-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,30,32,0.6), transparent);
+    }
+    .team-info { padding: 2rem; }
+    .team-specialty { color: rgba(184,168,130,0.5); margin-bottom: 0.75rem; }
+    .team-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ivory);
+      margin-bottom: 0.25rem;
+    }
+    .team-title { font-size: 0.875rem; color: var(--gold); margin-bottom: 1.25rem; }
+    .team-bio { font-size: 0.75rem; color: rgba(233,233,223,0.4); line-height: 1.7; }
+
+    /* ══════════════════════════════════════════
+       PROCESS
+    ══════════════════════════════════════════ */
+    #process {
+      background: var(--green-deep);
+      overflow: hidden;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    @media (max-width: 1023px) { .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+    @media (max-width: 600px)  { .process-grid { grid-template-columns: 1fr; } }
+
+    .process-step { position: relative; padding-right: clamp(0rem, 2.5vw, 2.5rem); }
+    .step-number-box {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(184,168,130,0.25);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.75rem;
+      transition: border-color 0.5s ease;
+    }
+    .process-step:hover .step-number-box { border-color: rgba(184,168,130,0.6); }
+    .step-num-label { color: rgba(184,168,130,0.6); }
+    .step-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .step-desc { font-size: 0.875rem; color: rgba(233,233,223,0.45); line-height: 1.7; margin-bottom: 1rem; }
+    .step-duration {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(184,168,130,0.4);
+    }
+
+    /* ══════════════════════════════════════════
+       TRUST
+    ══════════════════════════════════════════ */
+    #trust {
+      background: var(--green);
+      overflow: hidden;
+    }
+    .trust-header { text-align: center; max-width: 700px; margin: 0 auto clamp(3rem, 6vw, 6rem); }
+    .trust-reasons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(3rem, 6vw, 6rem);
+    }
+    @media (max-width: 1023px) { .trust-reasons { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .trust-reasons { grid-template-columns: 1fr; } }
+
+    .reason { display: flex; gap: 1rem; }
+    .reason-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 0.55rem; }
+    .reason-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    .reason:hover .reason-title { color: var(--gold); }
+    .reason-desc { font-size: 0.875rem; color: rgba(233,233,223,0.45); line-height: 1.7; }
+
+    .dubai-visual {
+      position: relative;
+      height: clamp(220px, 25vw, 320px);
+      overflow: hidden;
+    }
+    .dubai-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+    .dubai-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--green), transparent, var(--green));
+    }
+    .dubai-text {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .dubai-city {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--ivory);
+      letter-spacing: -0.02em;
+    }
+
+    /* ══════════════════════════════════════════
+       FINAL CTA
+    ══════════════════════════════════════════ */
+    #final-cta {
+      background: var(--green-deep);
+      overflow: hidden;
+    }
+    .cta-center { max-width: 700px; margin: 0 auto; text-align: center; }
+    .cta-h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--ivory);
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .cta-h2 em { font-style: italic; }
+    .cta-desc { color: rgba(233,233,223,0.5); font-size: 1.0625rem; line-height: 1.75; margin-bottom: 3rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem; }
+    .btn-email {
+      color: rgba(233,233,223,0.6);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(233,233,223,0.2);
+      padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-email:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      background: var(--green-deep);
+      border-top: 1px solid rgba(184,168,130,0.08);
+      overflow: hidden;
+    }
+    .footer-inner {
+      padding: clamp(3rem, 5vw, 5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+    @media (max-width: 767px) { .footer-inner { grid-template-columns: 1fr; } }
+
+    .footer-logo img { height: 32px; width: auto; margin-bottom: 1rem; }
+    .footer-tagline { font-size: 0.875rem; color: rgba(233,233,223,0.3); line-height: 1.6; max-width: 240px; }
+    .footer-col-title { color: rgba(184,168,130,0.6); margin-bottom: 1rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a {
+      font-size: 0.875rem;
+      color: rgba(233,233,223,0.4);
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact p { font-size: 0.875rem; color: rgba(233,233,223,0.4); line-height: 1.7; }
+    .footer-contact a { color: rgba(184,168,130,0.7); transition: color 0.3s ease; }
+    .footer-contact a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(184,168,130,0.08);
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.75rem; color: rgba(233,233,223,0.25); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.75rem; color: rgba(233,233,223,0.25); transition: color 0.3s ease; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ══════════════════════════════════════════
+       WHATSAPP BUTTON
+    ══════════════════════════════════════════ */
+    #wa-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green);
+      border: 1px solid rgba(184,168,130,0.3);
+      border-radius: 9999px;
+      padding: 0.75rem 1rem;
+      color: var(--ivory);
+      text-decoration: none;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    #wa-btn:hover { background: var(--green-light); border-color: rgba(184,168,130,0.6); }
+    #wa-btn svg { color: var(--gold); flex-shrink: 0; }
+    #wa-btn span { font-family: 'DM Sans', sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(233,233,223,0.8); }
+    @media (max-width: 600px) { #wa-btn span { display: none; } }
+
+    /* ══════════════════════════════════════════
+       SCROLLBAR
+    ══════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--green-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+    ::selection { background: var(--green); color: var(--ivory); }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="header-logo">
+        <img src="/images/elite-logo.png" alt="Elite IP" />
+      </a>
+      <nav class="header-nav">
+        <button onclick="scrollTo('#services')">Services</button>
+        <button onclick="scrollTo('#sectors')">Sectors</button>
+        <button onclick="scrollTo('#team')">Team</button>
+        <button onclick="scrollTo('#process')">Process</button>
+      </nav>
+      <button class="btn-header" onclick="scrollTo('#consultation')">Request Consultation</button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<div id="mobile-menu">
+  <nav class="mobile-nav">
+    <button onclick="scrollTo('#services'); closeMenu()">Services</button>
+    <button onclick="scrollTo('#sectors'); closeMenu()">Sectors</button>
+    <button onclick="scrollTo('#team'); closeMenu()">Team</button>
+    <button onclick="scrollTo('#process'); closeMenu()">Process</button>
+    <button class="btn-mobile" onclick="scrollTo('#consultation'); closeMenu()">Request Consultation</button>
+  </nav>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <video id="hero-video" muted playsinline preload="auto" src="/videos/hero-full.mp4"></video>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-2"></div>
+  <div class="hero-content">
+    <div class="container">
+      <div style="max-width:680px;">
+        <p class="label hero-label">Dubai · Intellectual Property & Corporate Law</p>
+        <h1 class="hero-h1">
+          The firm brands call<br>
+          <em>when the stakes are real.</em>
+        </h1>
+        <p class="hero-sub">Elite advises established and emerging businesses on intellectual property, trademark, and corporate legal strategy — with the commercial fluency that premium brands demand.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="scrollTo('#consultation')">Request Consultation</button>
+          <button class="btn-outline" onclick="scrollTo('#services')">Explore Services</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══ POSITIONING ══ -->
+<section id="positioning">
+  <div class="container section-pad">
+    <div class="section-header-2col">
+      <div class="fade-up">
+        <p class="label section-label">Why Elite</p>
+        <h2 class="section-h2">
+          The legal counsel your brand<br>
+          <em>was built to need.</em>
+        </h2>
+      </div>
+      <div class="fade-up" data-delay="2">
+        <p class="section-desc" style="margin-bottom:2rem;">Elite was founded on the belief that premium brands deserve IP and legal advisory that matches their standard. Not a generalist firm. Not a volume practice. A focused, commercial partner for businesses where brand equity and intellectual assets are the core of what they have built.</p>
+        <span class="accent-line"></span>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar fade-up" data-delay="1">
+        <p class="label pillar-num">01</p>
+        <h3 class="pillar-title">Commercially Fluent</h3>
+        <p class="pillar-body">We understand what your brand represents in the market — and what losing control of it would cost. Our counsel is shaped by business reality, not just legal theory.</p>
+      </div>
+      <div class="pillar fade-up" data-delay="2">
+        <p class="label pillar-num">02</p>
+        <h3 class="pillar-title">Regionally Grounded</h3>
+        <p class="pillar-body">Built in Dubai, licensed in the UAE, and experienced across GCC jurisdictions. We navigate local regulatory structures with precision and speed.</p>
+      </div>
+      <div class="pillar fade-up" data-delay="3">
+        <p class="label pillar-num">03</p>
+        <h3 class="pillar-title">Discretion as Standard</h3>
+        <p class="pillar-body">Our clients operate in sensitive industries where confidentiality is not optional. Every engagement is handled with the discretion that high-value businesses require.</p>
+      </div>
+      <div class="pillar fade-up" data-delay="4">
+        <p class="label pillar-num">04</p>
+        <h3 class="pillar-title">Strategic, Not Reactive</h3>
+        <p class="pillar-body">Elite works ahead of the problem — designing IP protection strategies that align with your growth plans, not just your current exposure.</p>
+      </div>
+    </div>
+
+    <div class="seal-block fade-up">
+      <div class="seal-img">
+        <img src="/images/gold-seal.png" alt="Elite IP Seal" />
+      </div>
+      <div>
+        <p class="seal-quote">"Protecting what you have built is not a formality — it is a strategic asset."</p>
+        <p class="label seal-attr">Elite IP · Dubai</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="container section-pad">
+    <div class="services-header">
+      <div>
+        <p class="label section-label fade-up" style="margin-bottom:1.25rem;">Legal Services</p>
+        <h2 class="section-h2 fade-up" data-delay="1">
+          Precision counsel across<br>
+          <em>every IP dimension.</em>
+        </h2>
+      </div>
+      <p class="services-hint fade-up" data-delay="2">Tap any service to explore what Elite delivers.</p>
+    </div>
+
+    <div class="services-grid fade-up">
+      <button class="service-card" onclick="toggleService(this)">
+        <div class="service-card-top">
+          <span class="label service-num">01</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <h3 class="service-title">Trademark Protection</h3>
+        <p class="service-short">Secure your brand identity at every level.</p>
+        <div class="service-detail">
+          <div class="service-detail-inner">
+            <p class="service-body">From registration strategy across UAE and GCC jurisdictions to enforcement and oppositions, Elite builds trademark frameworks that protect your brand name, logo, and identity — proactively, not reactively.</p>
+            <p class="label service-tags">Filing strategy · GCC registration · Opposition proceedings · Renewal management · Portfolio audits</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="service-card" onclick="toggleService(this)">
+        <div class="service-card-top">
+          <span class="label service-num">02</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <h3 class="service-title">Copyright Advisory</h3>
+        <p class="service-short">Protect the creative assets that define your brand.</p>
+        <div class="service-detail">
+          <div class="service-detail-inner">
+            <p class="service-body">Creative work — campaigns, content, design systems, packaging — represents significant commercial value. We advise on copyright ownership, licensing, infringement response, and cross-border protection.</p>
+            <p class="label service-tags">Ownership structuring · Licensing agreements · Infringement action · Content protection · Digital IP</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="service-card" onclick="toggleService(this)">
+        <div class="service-card-top">
+          <span class="label service-num">03</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <h3 class="service-title">Patent & Innovation Advisory</h3>
+        <p class="service-short">Protect your technical and product innovations.</p>
+        <div class="service-detail">
+          <div class="service-detail-inner">
+            <p class="service-body">Elite works with businesses developing proprietary products, formulas, and systems to navigate UAE and international patent processes — ensuring technical innovation is secured before it is exposed.</p>
+            <p class="label service-tags">Patentability assessment · UAE filing · PCT applications · Innovation strategy · Prior art review</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="service-card" onclick="toggleService(this)">
+        <div class="service-card-top">
+          <span class="label service-num">04</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <h3 class="service-title">IP Enforcement & Brand Defence</h3>
+        <p class="service-short">Act decisively when your IP is threatened.</p>
+        <div class="service-detail">
+          <div class="service-detail-inner">
+            <p class="service-body">When infringement occurs, speed and precision matter. Elite pursues enforcement through UAE courts, customs authorities, and digital platforms — removing counterfeit products and infringing content with urgency.</p>
+            <p class="label service-tags">Cease & desist · Court proceedings · Customs recordal · Marketplace takedowns · Counterfeit action</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="service-card" onclick="toggleService(this)">
+        <div class="service-card-top">
+          <span class="label service-num">05</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <h3 class="service-title">Brand Protection Strategy</h3>
+        <p class="service-short">A proactive framework for long-term brand security.</p>
+        <div class="service-detail">
+          <div class="service-detail-inner">
+            <p class="service-body">Beyond individual registrations, Elite designs comprehensive brand protection strategies — mapping IP assets, identifying vulnerabilities, and building legal infrastructure that scales with your brand.</p>
+            <p class="label service-tags">IP audits · Risk mapping · Portfolio management · Brand monitoring · Strategy sessions</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="service-card" onclick="toggleService(this)">
+        <div class="service-card-top">
+          <span class="label service-num">06</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <h3 class="service-title">Corporate Legal Services</h3>
+        <p class="service-short">The structural legal support growing businesses need.</p>
+        <div class="service-detail">
+          <div class="service-detail-inner">
+            <p class="service-body">From commercial contracts and business formation to licensing agreements and regulatory compliance, Elite provides the corporate legal framework that protects your business from the inside out.</p>
+            <p class="label service-tags">Company formation · Commercial contracts · Licensing · Partner agreements · Regulatory compliance</p>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONSULTATION ══ -->
+<section id="consultation">
+  <div class="container section-pad">
+    <div class="consultation-grid">
+      <!-- Left -->
+      <div class="consult-sticky">
+        <div class="fade-up">
+          <p class="label section-label" style="margin-bottom:1.5rem;">Request a Consultation</p>
+          <h2 class="section-h2" style="margin-bottom:2rem;">
+            Speak to Elite<br>
+            <em>before it becomes urgent.</em>
+          </h2>
+          <p class="section-desc" style="margin-bottom:2.5rem;max-width:420px;">Share the basics and we will review your situation within 4 business hours. Urgent matters are handled the same day — no forms, no delays.</p>
+
+          <div class="trust-item">
+            <div class="trust-dot"></div>
+            <div>
+              <p class="trust-title">4-hour response</p>
+              <p class="trust-desc">All inquiries reviewed within 4 business hours.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-dot"></div>
+            <div>
+              <p class="trust-title">Complete discretion</p>
+              <p class="trust-desc">Your business details remain strictly confidential.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-dot"></div>
+            <div>
+              <p class="trust-title">No obligation</p>
+              <p class="trust-desc">An initial consultation carries no commitment.</p>
+            </div>
+          </div>
+
+          <a href="https://wa.me/971000000000?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20legal%20matter%20with%20Elite%20IP." target="_blank" class="wa-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Prefer WhatsApp instead?
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="fade-up" data-delay="2">
+        <div id="form-success" class="form-success">
+          <div class="success-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8A882" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3 class="success-title">Request Received</h3>
+          <p class="success-desc">Your consultation request has been received. A member of the Elite team will be in touch within 4 business hours.</p>
+        </div>
+        <form id="consult-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div>
+              <input class="field-input" type="text" placeholder="Full Name *" id="f-name" required />
+            </div>
+            <div>
+              <input class="field-input" type="text" placeholder="Company Name" id="f-company" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <input class="field-input" type="tel" placeholder="Phone Number *" id="f-phone" required />
+            </div>
+            <div>
+              <input class="field-input" type="email" placeholder="Email Address *" id="f-email" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <select class="field-select" id="f-issue" required>
+                <option value="" disabled selected>Type of Issue *</option>
+                <option>Trademark</option>
+                <option>Copyright</option>
+                <option>Patent / Innovation</option>
+                <option>IP Enforcement</option>
+                <option>Brand Protection</option>
+                <option>Corporate Legal Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <select class="field-select" id="f-urgency" required>
+                <option value="" disabled selected>Urgency Level *</option>
+                <option>Immediate</option>
+                <option>Within 24 hours</option>
+                <option>This week</option>
+                <option>General inquiry</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <textarea class="field-textarea" placeholder="Brief description of your matter (optional)" rows="4" id="f-details"></textarea>
+          </div>
+          <div class="form-submit-row">
+            <button type="submit" class="btn-submit">Request Consultation</button>
+            <p class="form-privacy">Your information is handled with complete confidentiality.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTORS ══ -->
+<section id="sectors">
+  <div class="container">
+    <div class="divider-gold"></div>
+  </div>
+  <div class="container section-pad">
+    <div style="margin-bottom:clamp(3rem,6vw,6rem);">
+      <p class="label section-label fade-up" style="margin-bottom:1.25rem;">Sectors We Serve</p>
+      <h2 class="section-h2 fade-up" data-delay="1">
+        Deep fluency across<br>
+        <em>the industries that matter.</em>
+      </h2>
+    </div>
+
+    <div class="sectors-grid">
+      <div class="sector-card fade-up" data-delay="1">
+        <div class="sector-img"><img src="/images/green-fabric.png" alt="Luxury & Fashion" /><div class="sector-img-gradient"></div></div>
+        <h3 class="sector-title">Luxury & Fashion</h3>
+        <p class="sector-desc">Brand names, product designs, craftsmanship methods, and heritage narratives — the full scope of a luxury brand's IP estate.</p>
+      </div>
+      <div class="sector-card fade-up" data-delay="2">
+        <div class="sector-img"><img src="/images/premium-table.png" alt="Food & Beverage" /><div class="sector-img-gradient"></div></div>
+        <h3 class="sector-title">Food & Beverage</h3>
+        <p class="sector-desc">Trade names, recipes, packaging, restaurant concepts, and franchise protection for F&B businesses that have built a loyal market.</p>
+      </div>
+      <div class="sector-card fade-up" data-delay="3">
+        <div class="sector-img"><img src="/images/premium-building.png" alt="Real Estate & Hospitality" /><div class="sector-img-gradient"></div></div>
+        <h3 class="sector-title">Real Estate & Hospitality</h3>
+        <p class="sector-desc">Development branding, hospitality concepts, lifestyle positioning, and architectural identity for premium property and hotel ventures.</p>
+      </div>
+      <div class="sector-card fade-up" data-delay="1">
+        <div class="sector-img"><img src="/images/ivory-paper.png" alt="Lifestyle & Wellness" /><div class="sector-img-gradient"></div></div>
+        <h3 class="sector-title">Lifestyle & Wellness</h3>
+        <p class="sector-desc">Product lines, brand identity, and proprietary methods for wellness, beauty, and lifestyle businesses with strong consumer brand equity.</p>
+      </div>
+      <div class="sector-card fade-up" data-delay="2">
+        <div class="sector-img"><img src="/images/fingerprint-paper.png" alt="Technology & Innovation" /><div class="sector-img-gradient"></div></div>
+        <h3 class="sector-title">Technology & Innovation</h3>
+        <p class="sector-desc">Patent filings, software copyrights, trade secret protection, and IP strategy for technology businesses and product innovators.</p>
+      </div>
+      <div class="sector-card fade-up" data-delay="3">
+        <div class="sector-img"><img src="/images/leather-notebook.png" alt="Creative & Media" /><div class="sector-img-gradient"></div></div>
+        <h3 class="sector-title">Creative & Media</h3>
+        <p class="sector-desc">Content ownership, licensing frameworks, and copyright enforcement for creative studios, media houses, and content-led brands.</p>
+      </div>
+    </div>
+
+    <div class="sectors-footer fade-up">
+      <span class="accent-line" style="margin-top:0.75rem;flex-shrink:0;"></span>
+      <p class="sectors-footer-text">Elite works with businesses at every stage — from early-stage brand protection to comprehensive IP strategy for established market leaders. If your industry is not listed above, speak with us — our practice extends across all commercially active sectors in the UAE.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM ══ -->
+<section id="team">
+  <div class="container">
+    <div class="absolute" style="top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(184,168,130,0.2),transparent);"></div>
+  </div>
+  <div class="container section-pad">
+    <div style="margin-bottom:clamp(3rem,6vw,6rem);">
+      <p class="label section-label fade-up" style="margin-bottom:1.25rem;">The Team</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;">
+        <h2 class="section-h2 fade-up" data-delay="1">
+          Senior counsel.<br>
+          <em>Every engagement.</em>
+        </h2>
+        <p class="fade-up" data-delay="2" style="font-size:0.875rem;color:rgba(233,233,223,0.4);max-width:280px;line-height:1.6;">You will always work directly with a qualified senior lawyer — not a junior associate or a paralegal.</p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card fade-up" data-delay="1">
+        <div class="team-portrait">
+          <div class="team-initials-circle"><span class="team-initials">AK</span></div>
+          <div class="team-portrait-gradient"></div>
+        </div>
+        <div class="team-info">
+          <p class="label team-specialty">Trademark · Brand Strategy · GCC Enforcement</p>
+          <h3 class="team-name">Amira Khaled</h3>
+          <p class="team-title">Founder & Managing Partner</p>
+          <p class="team-bio">Amira brings over fifteen years of IP and corporate legal experience across the UAE and GCC. She founded Elite on the principle that premium brands deserve strategic legal counsel — not reactive paperwork.</p>
+        </div>
+      </div>
+      <div class="team-card fade-up" data-delay="2">
+        <div class="team-portrait">
+          <div class="team-initials-circle"><span class="team-initials">KE</span></div>
+          <div class="team-portrait-gradient"></div>
+        </div>
+        <div class="team-info">
+          <p class="label team-specialty">Patent · IP Litigation · Technology IP</p>
+          <h3 class="team-name">Karim El Sayed</h3>
+          <p class="team-title">Senior IP Counsel</p>
+          <p class="team-bio">Karim specialises in intellectual property litigation, patent advisory, and technology-related IP matters. With a background spanning private practice and in-house advisory for regional conglomerates.</p>
+        </div>
+      </div>
+      <div class="team-card fade-up" data-delay="3">
+        <div class="team-portrait">
+          <div class="team-initials-circle"><span class="team-initials">LM</span></div>
+          <div class="team-portrait-gradient"></div>
+        </div>
+        <div class="team-info">
+          <p class="label team-specialty">Corporate Law · Licensing · Commercial Contracts</p>
+          <h3 class="team-name">Layla Mourad</h3>
+          <p class="team-title">Corporate Legal Advisor</p>
+          <p class="team-bio">Layla leads Elite's corporate legal practice, advising clients on commercial structuring, contracts, licensing, and regulatory matters. She works closely with founders and executive teams.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section id="process">
+  <div class="container section-pad">
+    <div style="margin-bottom:clamp(3rem,6vw,5rem);">
+      <p class="label section-label fade-up" style="margin-bottom:1.25rem;">How We Work</p>
+      <h2 class="section-h2 fade-up" data-delay="1">
+        Decisive and structured<br>
+        <em>from first contact.</em>
+      </h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step fade-up" data-delay="1">
+        <div class="step-number-box"><span class="label step-num-label">01</span></div>
+        <h3 class="step-title">Initial Review</h3>
+        <p class="step-desc">We receive your consultation request and review the matter before we speak. You will not be asked to repeat yourself. Our team arrives informed.</p>
+        <p class="step-duration">Same day or within 4 hours</p>
+      </div>
+      <div class="process-step fade-up" data-delay="2">
+        <div class="step-number-box"><span class="label step-num-label">02</span></div>
+        <h3 class="step-title">Strategic Assessment</h3>
+        <p class="step-desc">A qualified senior lawyer reviews your IP position, risk exposure, and immediate priorities. No generalist opinions — specific, actionable guidance from the first meeting.</p>
+        <p class="step-duration">Within 48 hours of engagement</p>
+      </div>
+      <div class="process-step fade-up" data-delay="3">
+        <div class="step-number-box"><span class="label step-num-label">03</span></div>
+        <h3 class="step-title">Legal Action Plan</h3>
+        <p class="step-desc">We deliver a clear, structured plan — what needs to be protected, how, and in what sequence. Timelines, costs, and expected outcomes are laid out plainly.</p>
+        <p class="step-duration">Tailored to your matter</p>
+      </div>
+      <div class="process-step fade-up" data-delay="4">
+        <div class="step-number-box"><span class="label step-num-label">04</span></div>
+        <h3 class="step-title">Ongoing Protection</h3>
+        <p class="step-desc">Elite remains your active IP partner — monitoring, renewing, enforcing, and advising as your business evolves. Your IP estate is managed proactively, not reactively.</p>
+        <p class="step-duration">Continuous and retained</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST ══ -->
+<section id="trust">
+  <div class="container section-pad">
+    <div class="trust-header fade-up">
+      <p class="label section-label" style="margin-bottom:1.25rem;">Why Elite</p>
+      <h2 class="section-h2">
+        The standard you should<br>
+        <em>expect from your legal firm.</em>
+      </h2>
+    </div>
+
+    <div class="trust-reasons">
+      <div class="reason fade-up" data-delay="1">
+        <div class="reason-dot"></div>
+        <div>
+          <h3 class="reason-title">Licensed in the UAE</h3>
+          <p class="reason-desc">Elite operates under full UAE legal licensing, with deep experience navigating the UAE Ministry of Economy IP registration system and local court proceedings.</p>
+        </div>
+      </div>
+      <div class="reason fade-up" data-delay="2">
+        <div class="reason-dot"></div>
+        <div>
+          <h3 class="reason-title">Senior Counsel on Every Matter</h3>
+          <p class="reason-desc">No hand-offs to junior associates. Every client engagement is led by a qualified IP or corporate lawyer with direct accountability.</p>
+        </div>
+      </div>
+      <div class="reason fade-up" data-delay="3">
+        <div class="reason-dot"></div>
+        <div>
+          <h3 class="reason-title">Commercial Thinking First</h3>
+          <p class="reason-desc">We measure success by business outcomes — not billable hours. Our advice is shaped by what genuinely protects and advances your commercial interests.</p>
+        </div>
+      </div>
+      <div class="reason fade-up" data-delay="1">
+        <div class="reason-dot"></div>
+        <div>
+          <h3 class="reason-title">Response in Hours</h3>
+          <p class="reason-desc">In IP and brand protection, timing matters enormously. Elite commits to same-day responses for urgent matters and 4-hour acknowledgment for all inquiries.</p>
+        </div>
+      </div>
+      <div class="reason fade-up" data-delay="2">
+        <div class="reason-dot"></div>
+        <div>
+          <h3 class="reason-title">Absolute Confidentiality</h3>
+          <p class="reason-desc">Every matter handled by Elite is treated with complete discretion. Client information and commercial strategies are never discussed or referenced outside of the engagement.</p>
+        </div>
+      </div>
+      <div class="reason fade-up" data-delay="3">
+        <div class="reason-dot"></div>
+        <div>
+          <h3 class="reason-title">Built for Premium Brands</h3>
+          <p class="reason-desc">We do not operate a volume practice. Elite works with a focused roster of clients — which means you receive the attention, expertise, and strategic thinking your brand deserves.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dubai-visual fade-up">
+      <img src="/images/dubai-skyline.png" alt="Dubai" />
+      <div class="dubai-gradient"></div>
+      <div class="dubai-text">
+        <div>
+          <p class="label section-label" style="margin-bottom:1rem;">Based in Dubai</p>
+          <p class="dubai-city">Serving the Gulf Region</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section id="final-cta">
+  <div class="container">
+    <div class="divider-gold"></div>
+  </div>
+  <div class="container section-pad">
+    <div class="cta-center">
+      <p class="label section-label fade-up" style="margin-bottom:2rem;">Take the First Step</p>
+      <h2 class="cta-h2 fade-up" data-delay="1">
+        Your brand cannot afford<br>
+        <em>to be unprotected.</em>
+      </h2>
+      <p class="cta-desc fade-up" data-delay="2">A single consultation with Elite gives you clarity on your IP exposure, what requires immediate action, and what a strategic protection plan looks like for your specific business.</p>
+      <div class="cta-actions fade-up" data-delay="3">
+        <button class="btn-primary" onclick="scrollTo('#consultation')">Request Consultation</button>
+        <a href="mailto:hello@eliteip.ae" class="btn-email">hello@eliteip.ae</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><img src="/images/elite-logo.png" alt="Elite IP" /></div>
+        <p class="footer-tagline">Intellectual property and corporate legal advisory for premium brands and high-value businesses in the UAE and GCC.</p>
+      </div>
+      <div>
+        <p class="label footer-col-title">Practice Areas</p>
+        <ul class="footer-links">
+          <li><a href="#services">Trademark Protection</a></li>
+          <li><a href="#services">Copyright Advisory</a></li>
+          <li><a href="#services">Patent & Innovation</a></li>
+          <li><a href="#services">IP Enforcement</a></li>
+          <li><a href="#services">Brand Protection Strategy</a></li>
+          <li><a href="#services">Corporate Legal</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <p class="label footer-col-title">Contact</p>
+        <p>Dubai, United Arab Emirates</p>
+        <p style="margin-top:0.5rem;"><a href="mailto:hello@eliteip.ae">hello@eliteip.ae</a></p>
+        <p style="margin-top:0.25rem;"><a href="https://wa.me/971000000000">WhatsApp</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Elite IP. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ WHATSAPP ══ -->
+<a id="wa-btn" href="https://wa.me/971000000000?text=Hi%2C%20I%27m%20interested%20in%20Elite%27s%20legal%20services." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+  /* ── Smooth scroll ── */
+  function scrollTo(id) {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* ── Header scroll state ── */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  const toggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMenu() { mobileMenu.classList.remove('open'); }
+
+  /* ── Fade-up on scroll ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '-40px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── Services accordion ── */
+  function toggleService(btn) {
+    const isActive = btn.classList.contains('active');
+    document.querySelectorAll('.service-card').forEach(c => {
+      c.classList.remove('active');
+      c.querySelector('.service-detail').classList.remove('open');
+    });
+    if (!isActive) {
+      btn.classList.add('active');
+      btn.querySelector('.service-detail').classList.add('open');
+    }
+  }
+
+  /* ── Hero video loop ── */
+  const video = document.getElementById('hero-video');
+  const LOOP_START = 4.0;
+  video.addEventListener('ended', () => { video.currentTime = LOOP_START; video.play(); });
+  video.play().catch(() => {});
+
+  /* ── Consultation form ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('consult-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
