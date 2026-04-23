@@ -53,30 +53,48 @@ const faqSchema = {
   mainEntity: faqs.map(({ q, a }) => ({
     "@type": "Question",
     name: q,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: a,
-    },
+    acceptedAnswer: { "@type": "Answer", text: a },
   })),
 };
 
+const BORDER = "1px solid rgba(184,168,130,0.15)";
+const BORDER_BTN = "1px solid rgba(184,168,130,0.30)";
+
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-[#132D30] overflow-hidden">
+    <section
+      style={{
+        position: "relative",
+        backgroundColor: "#132D30",
+        overflow: "hidden",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="site-container section-pad">
+        {/* Header */}
         <div className="header-gap-lg">
           <FadeIn>
-            <p className="text-label text-[#B8A882] mb-5">Common Questions</p>
+            <p className="text-label" style={{ color: "#B8A882", marginBottom: "1.25rem" }}>
+              Common Questions
+            </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="font-display text-[clamp(2.2rem,4.5vw,4rem)] font-light leading-[1.05] text-[#E9E9DF] tracking-[-0.02em]">
+            <h2
+              className="font-display font-light"
+              style={{
+                fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+                color: "#E9E9DF",
+              }}
+            >
               What clients ask
               <br />
               <em className="italic">before they engage us.</em>
@@ -84,49 +102,94 @@ export default function FAQ() {
           </FadeIn>
         </div>
 
-        <div className="border-t border-[#B8A882]/15">
-          {faqs.map((faq, i) => (
-            <FadeIn key={i} delay={i * 0.04}>
-              <div className="border-b border-[#B8A882]/15">
-                <button
-                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className="w-full text-left py-6 flex items-start justify-between gap-6 cursor-pointer bg-transparent border-none group"
-                >
-                  <span
-                    className="font-display text-lg md:text-xl font-light text-[#E9E9DF] leading-snug group-hover:text-[#B8A882] transition-colors duration-300"
-                  >
-                    {faq.q}
-                  </span>
-                  <span
-                    className={`flex-shrink-0 w-6 h-6 flex items-center justify-center border border-[#B8A882]/30 text-[#B8A882] text-sm transition-transform duration-300 mt-0.5 ${
-                      openIndex === i ? "rotate-45" : ""
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
+        {/* FAQ list */}
+        <div style={{ borderTop: BORDER }}>
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
+            const isHovered = hovered === i;
 
-                <AnimatePresence>
-                  {openIndex === i && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
+            return (
+              <FadeIn key={i} delay={i * 0.04}>
+                <div style={{ borderBottom: BORDER }}>
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    onMouseEnter={() => setHovered(i)}
+                    onMouseLeave={() => setHovered(null)}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      paddingTop: "1.5rem",
+                      paddingBottom: "1.5rem",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "1.5rem",
+                      cursor: "pointer",
+                      background: "none",
+                      border: "none",
+                    }}
+                  >
+                    <span
+                      className="font-display font-light"
+                      style={{
+                        fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
+                        lineHeight: 1.4,
+                        color: isHovered ? "#B8A882" : "#E9E9DF",
+                        transition: "color 0.3s",
+                      }}
                     >
-                      <p
-                        className="pb-6 text-sm text-[#E9E9DF]/60 leading-relaxed max-w-3xl"
-                        style={{ fontFamily: "var(--font-body)" }}
+                      {faq.q}
+                    </span>
+
+                    {/* + / × indicator */}
+                    <span
+                      style={{
+                        flexShrink: 0,
+                        width: "24px",
+                        height: "24px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: BORDER_BTN,
+                        color: "#B8A882",
+                        fontSize: "0.875rem",
+                        marginTop: "2px",
+                        transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+                        transition: "transform 0.3s",
+                      }}
+                    >
+                      +
+                    </span>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        style={{ overflow: "hidden" }}
                       >
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </FadeIn>
-          ))}
+                        <p
+                          style={{
+                            paddingBottom: "1.5rem",
+                            fontSize: "0.875rem",
+                            color: "rgba(233,233,223,0.60)",
+                            lineHeight: 1.75,
+                            maxWidth: "48rem",
+                            fontFamily: "var(--font-body)",
+                          }}
+                        >
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>
