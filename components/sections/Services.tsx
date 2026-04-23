@@ -78,7 +78,7 @@ export default function Services() {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#132D30]/30 to-transparent pointer-events-none" />
       <div className="site-container section-pad">
         {/* Header */}
-        <div className="mb-20 md:mb-28">
+        <div className="header-gap-lg">
           <FadeIn>
             <p className="text-label text-[#B8A882] mb-5">Legal Services</p>
           </FadeIn>

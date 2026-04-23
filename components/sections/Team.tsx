@@ -32,7 +32,7 @@ export default function Team() {
 
       <div className="site-container section-pad">
         {/* Header */}
-        <div className="mb-16 md:mb-24">
+        <div className="header-gap-md">
           <FadeIn>
             <p className="text-label text-[#B8A882] mb-5">The Team</p>
           </FadeIn>

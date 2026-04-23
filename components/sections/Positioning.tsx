@@ -48,7 +48,7 @@ export default function Positioning() {
 
       <div className="site-container section-pad">
         {/* Section header */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 mb-20 md:mb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 header-gap-lg">
           <FadeIn>
             <div>
               <p className="text-label text-[#B8A882] mb-6">Why Elite</p>
@@ -73,7 +73,7 @@ export default function Positioning() {
         </div>
 
         {/* Pillars */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 mb-20 md:mb-28">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 header-gap-lg">
           {pillars.map((pillar, i) => (
             <FadeIn key={pillar.number} delay={i * 0.08}>
               <div className="group border-t border-[#B8A882]/20 pt-6 hover:border-[#B8A882]/50 transition-colors duration-500">

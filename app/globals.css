@@ -232,6 +232,14 @@ button {
   .header-gap-lg { margin-bottom: 8rem; }
 }
 
+/* Replaces: mb-16 md:mb-24 */
+.header-gap-md {
+  margin-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .header-gap-md { margin-bottom: 6rem; }
+}
+
 /* "Explore Services" — text-link weight on mobile, full ghost on sm+ */
 .btn-ghost-secondary {
   display: inline-block;

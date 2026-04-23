@@ -110,13 +110,13 @@ export default function Consultation() {
           {/* Left: copy */}
           <div className="lg:sticky lg:top-28">
             <FadeIn>
-              <p className="text-label text-[#B8A882] mb-6">Request a Consultation</p>
-              <h2 className="font-display text-[clamp(2.2rem,4vw,3.8rem)] font-light leading-[1.05] text-[#E9E9DF] tracking-[-0.02em] mb-8">
+              <p className="text-label text-[#B8A882]" style={{ marginBottom: "1.5rem" }}>Request a Consultation</p>
+              <h2 className="font-display font-light leading-[1.05] text-[#E9E9DF] tracking-[-0.02em]" style={{ fontSize: "clamp(2.2rem,4vw,3.8rem)", marginBottom: "2rem" }}>
                 Speak to Elite
                 <br />
                 <em className="italic">before it becomes urgent.</em>
               </h2>
-              <p className="text-[#E9E9DF]/55 text-[1.0625rem] leading-relaxed mb-10 max-w-md" style={{ fontFamily: "var(--font-body)" }}>
+              <p className="text-[#E9E9DF]/55 text-[1.0625rem] leading-relaxed max-w-md" style={{ fontFamily: "var(--font-body)", marginBottom: "2.5rem" }}>
                 Share the basics and we will review your situation within 4 business hours. Urgent matters are handled the same day — no forms, no delays.
               </p>
 
@@ -141,7 +141,7 @@ export default function Consultation() {
                 ))}
               </div>
 
-              <div className="mt-10">
+              <div style={{ marginTop: "2.5rem" }}>
                 <a
                   href="https://wa.me/971000000000?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20legal%20matter%20with%20Elite%20IP."
                   target="_blank"
