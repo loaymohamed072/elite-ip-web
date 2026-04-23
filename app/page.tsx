@@ -8,6 +8,8 @@ import Sectors from "@/components/sections/Sectors";
 import Team from "@/components/sections/Team";
 import Process from "@/components/sections/Process";
 import Trust from "@/components/sections/Trust";
+import FAQ from "@/components/sections/FAQ";
+import Insights from "@/components/sections/Insights";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export default function Home() {
@@ -23,6 +25,8 @@ export default function Home() {
         <Team />
         <Process />
         <Trust />
+        <FAQ />
+        <Insights />
         <FinalCTA />
       </main>
       <Footer />

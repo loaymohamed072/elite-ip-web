@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -9,6 +10,7 @@ const navLinks = [
   { label: "Sectors", href: "#sectors" },
   { label: "Team", href: "#team" },
   { label: "Process", href: "#process" },
+  { label: "Insights", href: "/insights", isRoute: true },
 ];
 
 export default function Header() {
@@ -51,15 +53,25 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => handleNav(link.href)}
-                className="text-label text-[#E9E9DF]/60 hover:text-[#B8A882] transition-colors duration-300 cursor-pointer bg-transparent border-none"
-              >
-                {link.label}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-label text-[#E9E9DF]/60 hover:text-[#B8A882] transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNav(link.href)}
+                  className="text-label text-[#E9E9DF]/60 hover:text-[#B8A882] transition-colors duration-300 cursor-pointer bg-transparent border-none"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
           </nav>
 
           {/* CTA */}
@@ -102,18 +114,35 @@ export default function Header() {
             className="fixed inset-0 z-40 bg-[#0A1E20] flex flex-col pt-[72px]"
           >
             <nav className="flex flex-col px-6 py-10 gap-8">
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 + 0.1, duration: 0.5 }}
-                  onClick={() => handleNav(link.href)}
-                  className="text-left font-display text-4xl font-light text-[#E9E9DF] hover:text-[#B8A882] transition-colors cursor-pointer bg-transparent border-none"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
+              {navLinks.map((link, i) =>
+                link.isRoute ? (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 + 0.1, duration: 0.5 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="font-display text-4xl font-light text-[#E9E9DF] hover:text-[#B8A882] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.button
+                    key={link.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 + 0.1, duration: 0.5 }}
+                    onClick={() => handleNav(link.href)}
+                    className="text-left font-display text-4xl font-light text-[#E9E9DF] hover:text-[#B8A882] transition-colors cursor-pointer bg-transparent border-none"
+                  >
+                    {link.label}
+                  </motion.button>
+                )
+              )}
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
