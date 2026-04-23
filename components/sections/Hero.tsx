@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const SESSION_KEY = "eliteHeroIntroSeen";
 // Texture loop starts here — logo intro occupies 0–4s
@@ -100,11 +101,21 @@ export default function Hero() {
 
   return (
     <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
-      {/* Video background */}
+      {/* Mobile video — simple loop, no intro logic */}
+      <video
+        src="/videos/mobile-hero.mp4"
+        className="absolute inset-0 w-full h-full object-cover object-center md:hidden"
+        muted
+        playsInline
+        autoPlay
+        loop
+        preload="auto"
+      />
+      {/* Desktop video — full intro + loop logic */}
       <video
         ref={videoRef}
         src="/videos/hero-full.mp4"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
         muted
         playsInline
         preload="auto"
@@ -141,12 +152,16 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0 }}
-                  className="flex items-center gap-3 mb-9"
+                  className="mb-9"
                 >
-                  <span className="w-5 h-px bg-[#B8A882]/50 shrink-0" />
-                  <p className="text-label text-[#B8A882]">
-                    Dubai · Intellectual Property & Corporate Law
-                  </p>
+                  <Image
+                    src="/images/elite-logo-nobg.png"
+                    alt="Elite IP"
+                    width={320}
+                    height={120}
+                    className="w-[220px] md:w-[300px] h-auto"
+                    priority
+                  />
                 </motion.div>
 
                 {/* Headline */}

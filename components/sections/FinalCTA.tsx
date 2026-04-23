@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import FadeIn from "@/components/ui/FadeIn";
 
 export default function FinalCTA() {
@@ -17,17 +16,6 @@ export default function FinalCTA() {
       />
       {/* Directional atmosphere */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A1E20]/30 via-transparent to-[#0A1E20]/70" />
-      {/* Decorative wax seal — top right, very faint */}
-      <div className="absolute top-0 right-0 w-[320px] h-[320px] opacity-[0.04] pointer-events-none overflow-hidden">
-        <Image
-          src="/images/wax-seal.webp"
-          alt=""
-          fill
-          className="object-contain object-right-top"
-          sizes="320px"
-        />
-      </div>
-
       {/* Top gold line */}
       <div className="site-container relative">
         <div className="divider-gold" />
