@@ -36,11 +36,11 @@ export default function FinalCTA() {
       <div className="site-container section-pad relative">
         <div style={{ maxWidth: "48rem", marginLeft: "auto", marginRight: "auto", textAlign: "center" }}>
           <FadeIn>
-            <p className="text-label text-[#B8A882] mb-8">Take the First Step</p>
+            <p className="text-label text-[#B8A882]" style={{ marginBottom: "1.75rem" }}>Take the First Step</p>
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <h2 className="font-display text-[clamp(2.6rem,5.5vw,5rem)] font-light leading-[1.0] text-[#E9E9DF] tracking-[-0.02em] mb-8">
+            <h2 className="font-display font-light leading-[1.0] text-[#E9E9DF] tracking-[-0.02em]" style={{ fontSize: "clamp(2.6rem,5.5vw,5rem)", marginBottom: "2.5rem" }}>
               Your brand cannot afford
               <br />
               <em className="italic">to be unprotected.</em>
