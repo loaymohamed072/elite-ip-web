@@ -35,7 +35,7 @@ export default function Trust() {
       <div
         className="absolute inset-0 opacity-[0.07] pointer-events-none"
         style={{
-          backgroundImage: "url('/images/dark-marble.png')",
+          backgroundImage: "url('/images/dark-marble.webp')",
           backgroundSize: "cover",
         }}
       />
@@ -82,7 +82,7 @@ export default function Trust() {
       <FadeIn direction="none">
         <div className="relative overflow-hidden w-full" style={{ height: "clamp(280px, 32vw, 460px)" }}>
           <Image
-            src="/images/dubai-skyline.png"
+            src="/images/dubai-skyline.webp"
             alt="Dubai — Elite IP Home"
             fill
             className="object-cover object-center"

@@ -31,7 +31,7 @@ export default function Positioning() {
       <div
         className="absolute inset-0 opacity-[0.08] pointer-events-none"
         style={{
-          backgroundImage: "url('/images/dark-marble.png')",
+          backgroundImage: "url('/images/dark-marble.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -40,7 +40,7 @@ export default function Positioning() {
       <div
         className="absolute bottom-0 left-0 right-0 h-1/2 opacity-[0.05] pointer-events-none"
         style={{
-          backgroundImage: "url('/images/ivory-paper.png')",
+          backgroundImage: "url('/images/ivory-paper.webp')",
           backgroundSize: "cover",
           backgroundPosition: "bottom center",
         }}
@@ -95,13 +95,13 @@ export default function Positioning() {
             {/* Faint ivory paper texture inside the quote block */}
             <div
               className="absolute inset-0 opacity-[0.04] pointer-events-none"
-              style={{ backgroundImage: "url('/images/ivory-paper.png')", backgroundSize: "cover" }}
+              style={{ backgroundImage: "url('/images/ivory-paper.webp')", backgroundSize: "cover" }}
             />
             {/* Gold accent on the left edge */}
             <div className="absolute left-0 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-[#B8A882]/40 to-transparent" />
             <div className="relative shrink-0 w-32 h-32 md:w-44 md:h-44 overflow-hidden border border-[#B8A882]/15">
               <Image
-                src="/images/gold-seal.png"
+                src="/images/gold-seal.webp"
                 alt="Elite IP — Premium Legal Authority"
                 fill
                 className="object-cover opacity-90"

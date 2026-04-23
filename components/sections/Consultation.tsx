@@ -100,7 +100,7 @@ export default function Consultation() {
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
-          backgroundImage: "url('/images/ivory-paper.png')",
+          backgroundImage: "url('/images/ivory-paper.webp')",
           backgroundSize: "cover",
         }}
       />

@@ -13,7 +13,7 @@ const services = [
     short: "Secure your brand identity at every level.",
     body: "From registration strategy across UAE and GCC jurisdictions to enforcement and oppositions, Elite builds trademark frameworks that protect your brand name, logo, and identity — proactively, not reactively.",
     detail: "Filing strategy · GCC registration · Opposition proceedings · Renewal management · Portfolio audits",
-    image: "/images/leather-notebook.png",
+    image: "/images/leather-notebook.webp",
   },
   {
     id: "copyright",
@@ -22,7 +22,7 @@ const services = [
     short: "Protect the creative assets that define your brand.",
     body: "Creative work — campaigns, content, design systems, packaging — represents significant commercial value. We advise on copyright ownership, licensing, infringement response, and cross-border protection.",
     detail: "Ownership structuring · Licensing agreements · Infringement action · Content protection · Digital IP",
-    image: "/images/fingerprint-paper.png",
+    image: "/images/fingerprint-paper.webp",
   },
   {
     id: "patent",
@@ -31,7 +31,7 @@ const services = [
     short: "Protect your technical and product innovations.",
     body: "Elite works with businesses developing proprietary products, formulas, and systems to navigate UAE and international patent processes — ensuring technical innovation is secured before it is exposed.",
     detail: "Patentability assessment · UAE filing · PCT applications · Innovation strategy · Prior art review",
-    image: "/images/wax-seal.png",
+    image: "/images/wax-seal.webp",
   },
   {
     id: "enforcement",
@@ -40,7 +40,7 @@ const services = [
     short: "Act decisively when your IP is threatened.",
     body: "When infringement occurs, speed and precision matter. Elite pursues enforcement through UAE courts, customs authorities, and digital platforms — removing counterfeit products and infringing content with urgency.",
     detail: "Cease & desist · Court proceedings · Customs recordal · Marketplace takedowns · Counterfeit action",
-    image: "/images/gold-seal.png",
+    image: "/images/gold-seal.webp",
   },
   {
     id: "corporate",
@@ -49,7 +49,7 @@ const services = [
     short: "The structural legal support growing businesses need.",
     body: "From commercial contracts and business formation to licensing agreements and regulatory compliance, Elite provides the corporate legal framework that protects your business from the inside out.",
     detail: "Company formation · Commercial contracts · Licensing · Partner agreements · Regulatory compliance",
-    image: "/images/luxury-corridor.png",
+    image: "/images/luxury-corridor.webp",
   },
   {
     id: "litigation",
@@ -58,7 +58,7 @@ const services = [
     short: "Strategic litigation when your rights are on the line.",
     body: "Elite handles civil disputes and criminal infringement matters with precision and authority — from IP-related litigation and counterfeit prosecution to court proceedings across UAE jurisdictions.",
     detail: "Civil litigation · Criminal prosecution · IP disputes · Court proceedings · Enforcement strategy",
-    image: "/images/gold-seal.png",
+    image: "/images/gold-seal.webp",
   },
 ];
 
@@ -72,7 +72,7 @@ export default function Services() {
       {/* Subtle paper texture — adds material depth without distracting */}
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none"
-        style={{ backgroundImage: "url('/images/ivory-paper.png')", backgroundSize: "cover" }}
+        style={{ backgroundImage: "url('/images/ivory-paper.webp')", backgroundSize: "cover" }}
       />
       {/* Bottom atmosphere fade into next section */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#132D30]/30 to-transparent pointer-events-none" />

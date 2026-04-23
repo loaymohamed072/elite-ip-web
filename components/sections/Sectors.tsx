@@ -5,32 +5,32 @@ const sectors = [
   {
     name: "Luxury & Fashion",
     description: "Brand names, product designs, craftsmanship methods, and heritage narratives — the full scope of a luxury brand's IP estate.",
-    image: "/images/green-fabric.png",
+    image: "/images/green-fabric.webp",
   },
   {
     name: "Food & Beverage",
     description: "Trade names, recipes, packaging, restaurant concepts, and franchise protection for F&B businesses that have built a loyal market.",
-    image: "/images/premium-table.png",
+    image: "/images/premium-table.webp",
   },
   {
     name: "Real Estate & Hospitality",
     description: "Development branding, hospitality concepts, lifestyle positioning, and architectural identity for premium property and hotel ventures.",
-    image: "/images/premium-building.png",
+    image: "/images/premium-building.webp",
   },
   {
     name: "Lifestyle & Wellness",
     description: "Product lines, brand identity, and proprietary methods for wellness, beauty, and lifestyle businesses with strong consumer brand equity.",
-    image: "/images/ivory-paper.png",
+    image: "/images/ivory-paper.webp",
   },
   {
     name: "Technology & Innovation",
     description: "Patent filings, software copyrights, trade secret protection, and IP strategy for technology businesses and product innovators.",
-    image: "/images/fingerprint-paper.png",
+    image: "/images/fingerprint-paper.webp",
   },
   {
     name: "Creative & Media",
     description: "Content ownership, licensing frameworks, and copyright enforcement for creative studios, media houses, and content-led brands.",
-    image: "/images/leather-notebook.png",
+    image: "/images/leather-notebook.webp",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function Sectors() {
       {/* Green textile texture — atmospheric material layer */}
       <div
         className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{ backgroundImage: "url('/images/green-textile.png')", backgroundSize: "cover" }}
+        style={{ backgroundImage: "url('/images/green-textile.webp')", backgroundSize: "cover" }}
       />
       {/* Divider */}
       <div className="site-container">

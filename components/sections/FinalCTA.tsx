@@ -10,7 +10,7 @@ export default function FinalCTA() {
       <div
         className="absolute inset-0 opacity-[0.22] pointer-events-none"
         style={{
-          backgroundImage: "url('/images/dark-marble.png')",
+          backgroundImage: "url('/images/dark-marble.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -20,7 +20,7 @@ export default function FinalCTA() {
       {/* Decorative wax seal — top right, very faint */}
       <div className="absolute top-0 right-0 w-[320px] h-[320px] opacity-[0.04] pointer-events-none overflow-hidden">
         <Image
-          src="/images/wax-seal.png"
+          src="/images/wax-seal.webp"
           alt=""
           fill
           className="object-contain object-right-top"
