@@ -309,7 +309,8 @@ button {
 /* Portal shell */
 .portal-shell {
   min-height: 100vh;
-  background-color: #0A1E20;
+  background: linear-gradient(rgba(10,30,32,0.88), rgba(10,30,32,0.96)),
+              url('/images/portal-bg.png') center/cover no-repeat fixed;
   color: #E9E9DF;
 }
 
@@ -664,7 +665,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0A1E20;
+  background: linear-gradient(rgba(10,30,32,0.80), rgba(10,30,32,0.92)),
+              url('/images/portal-bg.png') center/cover no-repeat fixed;
   padding: 1.5rem;
 }
 
