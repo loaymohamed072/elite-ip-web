@@ -7,6 +7,7 @@ import AdminCreateClientForm from '@/components/portal/AdminCreateClientForm'
 import AdminCreateMatterForm from '@/components/portal/AdminCreateMatterForm'
 import AdminUpdateMatterForm from '@/components/portal/AdminUpdateMatterForm'
 import AdminAddUpdateForm from '@/components/portal/AdminAddUpdateForm'
+import AdminArchiveClientButton from '@/components/portal/AdminArchiveClientButton'
 
 export default async function AdminDashboardPage() {
   const supabase = await createClient()
@@ -101,6 +102,7 @@ export default async function AdminDashboardPage() {
                       <th>Company</th>
                       <th>Phone</th>
                       <th>Joined</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -116,6 +118,9 @@ export default async function AdminDashboardPage() {
                             month: 'short',
                             day: 'numeric',
                           })}
+                        </td>
+                        <td>
+                          <AdminArchiveClientButton clientId={c.id} clientName={c.full_name} />
                         </td>
                       </tr>
                     ))}

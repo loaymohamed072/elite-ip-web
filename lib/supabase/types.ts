@@ -31,6 +31,7 @@ export type Database = {
           email: string
           phone: string | null
           company_name: string | null
+          archived: boolean
           created_at: string
         }
         Insert: {
@@ -40,6 +41,7 @@ export type Database = {
           email: string
           phone?: string | null
           company_name?: string | null
+          archived?: boolean
           created_at?: string
         }
         Update: {
@@ -48,6 +50,7 @@ export type Database = {
           email?: string
           phone?: string | null
           company_name?: string | null
+          archived?: boolean
         }
         Relationships: []
       }

@@ -145,6 +145,30 @@ export async function updateMatterStageAction(
   }
 }
 
+export async function archiveClientAction(
+  _prevState: { error: string | null; success: boolean },
+  formData: FormData
+): Promise<{ error: string | null; success: boolean }> {
+  try {
+    const { supabase } = await requireAdmin()
+
+    const client_id = (formData.get('client_id') as string)?.trim()
+    if (!client_id) return { error: 'Client ID is required.', success: false }
+
+    const { error } = await supabase
+      .from('clients')
+      .update({ archived: true })
+      .eq('id', client_id)
+
+    if (error) return { error: error.message, success: false }
+
+    revalidatePath('/admin/dashboard')
+    return { error: null, success: true }
+  } catch (e) {
+    return { error: (e as Error).message, success: false }
+  }
+}
+
 export async function addMatterUpdateAction(
   _prevState: { error: string | null; success: boolean },
   formData: FormData

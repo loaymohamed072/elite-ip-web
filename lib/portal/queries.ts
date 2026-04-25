@@ -57,6 +57,7 @@ export async function adminGetAllClients(): Promise<Client[]> {
   const { data } = await supabase
     .from('clients')
     .select('*')
+    .eq('archived', false)
     .order('created_at', { ascending: false })
 
   return data ?? []
