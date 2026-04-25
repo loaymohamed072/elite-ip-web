@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { getCurrentProfile, adminGetAllClients, adminGetAllMatters } from '@/lib/portal/queries'
@@ -33,14 +34,16 @@ export default async function AdminDashboardPage() {
     <div className="portal-shell">
       {/* Top bar */}
       <header className="portal-topbar">
-        <div>
-          <span className="portal-topbar-logo">Elite IP</span>
-          <span
-            className="portal-topbar-label"
-            style={{ marginLeft: '1rem', display: 'inline' }}
-          >
-            Admin Dashboard
-          </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <Image
+            src="/images/elite-logo.png"
+            alt="Elite IP"
+            width={120}
+            height={60}
+            style={{ objectFit: 'contain', height: 'auto', width: 'clamp(80px, 15vw, 120px)' }}
+            priority
+          />
+          <span className="portal-topbar-label">Admin Dashboard</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <span

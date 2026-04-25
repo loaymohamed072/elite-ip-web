@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import {
@@ -46,14 +47,16 @@ export default async function PortalDashboardPage() {
     <div className="portal-shell">
       {/* Top bar */}
       <header className="portal-topbar">
-        <div>
-          <span className="portal-topbar-logo">Elite IP</span>
-          <span
-            className="portal-topbar-label"
-            style={{ marginLeft: '1rem', display: 'inline' }}
-          >
-            Client Portal
-          </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <Image
+            src="/images/elite-logo.png"
+            alt="Elite IP"
+            width={120}
+            height={60}
+            style={{ objectFit: 'contain', height: 'auto', width: 'clamp(80px, 15vw, 120px)' }}
+            priority
+          />
+          <span className="portal-topbar-label">Client Portal</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <span

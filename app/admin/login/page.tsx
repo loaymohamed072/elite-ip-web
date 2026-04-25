@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
@@ -51,13 +52,17 @@ export default function AdminLoginPage() {
       <div className="portal-login-box">
         {/* Logo */}
         <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
-          <Link href="/" className="portal-topbar-logo" style={{ fontSize: '1.4rem' }}>
-            Elite IP
+          <Link href="/">
+            <Image
+              src="/images/elite-logo.png"
+              alt="Elite IP"
+              width={160}
+              height={80}
+              style={{ objectFit: 'contain', height: 'auto', width: 'clamp(120px, 40vw, 160px)', margin: '0 auto' }}
+              priority
+            />
           </Link>
-          <p
-            className="portal-topbar-label"
-            style={{ marginTop: '0.5rem', display: 'block', textAlign: 'center' }}
-          >
+          <p className="portal-topbar-label" style={{ marginTop: '0.75rem', display: 'block', textAlign: 'center' }}>
             Admin Access
           </p>
         </div>
