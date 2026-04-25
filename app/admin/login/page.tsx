@@ -1,0 +1,137 @@
+'use client'
+
+import { useState, useTransition } from 'react'
+import Link from 'next/link'
+import { createClient } from '@/lib/supabase/client'
+import { useRouter } from 'next/navigation'
+
+export default function AdminLoginPage() {
+  const router = useRouter()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [isPending, startTransition] = useTransition()
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setError(null)
+
+    startTransition(async () => {
+      const supabase = createClient()
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+
+      if (authError || !data.user) {
+        setError('Invalid credentials.')
+        return
+      }
+
+      // Role check — must be admin
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', data.user.id)
+        .single()
+
+      if (!profile || profile.role !== 'admin') {
+        await supabase.auth.signOut()
+        setError('Access denied. Admin accounts only.')
+        return
+      }
+
+      router.push('/admin/dashboard')
+      router.refresh()
+    })
+  }
+
+  return (
+    <div className="portal-login-page">
+      <div className="portal-login-box">
+        {/* Logo */}
+        <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
+          <Link href="/" className="portal-topbar-logo" style={{ fontSize: '1.4rem' }}>
+            Elite IP
+          </Link>
+          <p
+            className="portal-topbar-label"
+            style={{ marginTop: '0.5rem', display: 'block', textAlign: 'center' }}
+          >
+            Admin Access
+          </p>
+        </div>
+
+        <div className="portal-divider" style={{ marginTop: '0', marginBottom: '2rem' }} />
+
+        <form onSubmit={handleSubmit} className="portal-form">
+          {error && <div className="portal-error">{error}</div>}
+
+          <div className="portal-field">
+            <label htmlFor="email" className="portal-label">
+              Email address
+            </label>
+            <input
+              id="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="portal-input"
+              placeholder="admin@eliteip.ae"
+              disabled={isPending}
+            />
+          </div>
+
+          <div className="portal-field">
+            <label htmlFor="password" className="portal-label">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="portal-input"
+              placeholder="••••••••"
+              disabled={isPending}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="portal-btn-primary"
+            disabled={isPending}
+            style={{ marginTop: '0.5rem' }}
+          >
+            {isPending ? 'Signing in…' : 'Sign In'}
+          </button>
+        </form>
+
+        <p
+          style={{
+            marginTop: '2rem',
+            textAlign: 'center',
+            fontSize: '0.8125rem',
+            color: 'rgba(233,233,223,0.3)',
+            fontFamily: 'var(--font-body)',
+          }}
+        >
+          <Link
+            href="/"
+            style={{
+              color: 'rgba(184,168,130,0.5)',
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px',
+            }}
+          >
+            ← Return to website
+          </Link>
+        </p>
+      </div>
+    </div>
+  )
+}

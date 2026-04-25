@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendConsultationEmail } from "@/lib/portal/email";
 
 export async function POST(req: Request) {
   try {
@@ -10,28 +11,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // TODO: Wire to Resend or preferred email provider
-    // Example with Resend (install: npm i resend):
-    //
-    // import { Resend } from "resend";
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: "Elite IP <noreply@eliteip.ae>",
-    //   to: process.env.CONTACT_EMAIL!,
-    //   subject: `[${urgency}] Consultation Request — ${issueType}`,
-    //   html: `
-    //     <h2>New Consultation Request</h2>
-    //     <p><strong>Name:</strong> ${fullName}</p>
-    //     <p><strong>Company:</strong> ${company || "N/A"}</p>
-    //     <p><strong>Phone:</strong> ${phone}</p>
-    //     <p><strong>Email:</strong> ${email}</p>
-    //     <p><strong>Issue:</strong> ${issueType}</p>
-    //     <p><strong>Urgency:</strong> ${urgency}</p>
-    //     <p><strong>Details:</strong> ${details || "None provided"}</p>
-    //   `,
-    // });
-
-    console.log("Consultation request received:", { fullName, company, phone, email, issueType, urgency, details });
+    await sendConsultationEmail({ fullName, company, phone, email, issueType, urgency, details }).catch(
+      (err) => console.error("Consultation email error:", err)
+    );
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

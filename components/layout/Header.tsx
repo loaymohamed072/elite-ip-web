@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Team", href: "#team" },
   { label: "Process", href: "#process" },
   { label: "Insights", href: "/insights", isRoute: true },
+  { label: "Client Portal", href: "/portal/login", isRoute: true },
 ];
 
 export default function Header() {
@@ -85,7 +86,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="header-desktop-nav">
             {navLinks.map((link) =>
               link.isRoute ? (
                 <Link
@@ -129,7 +130,7 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
+          <div className="header-desktop-cta">
             <button onClick={() => handleNav("#consultation")} className="btn-header">
               Request Consultation
             </button>
@@ -137,18 +138,9 @@ export default function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden"
+            className="header-mobile-btn"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "6px",
-              padding: "8px",
-              cursor: "pointer",
-              background: "none",
-              border: "none",
-            }}
           >
             <span
               style={{
