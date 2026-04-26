@@ -118,7 +118,27 @@ export default function PortalLoginPage() {
 
         <p
           style={{
-            marginTop: '1.25rem',
+            marginTop: '1rem',
+            textAlign: 'center',
+            fontSize: '0.8125rem',
+            fontFamily: 'var(--font-body)',
+          }}
+        >
+          <Link
+            href="/portal/forgot-password"
+            style={{
+              color: 'rgba(184,168,130,0.6)',
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px',
+            }}
+          >
+            Forgot your password?
+          </Link>
+        </p>
+
+        <p
+          style={{
+            marginTop: '0.75rem',
             textAlign: 'center',
             fontSize: '0.8125rem',
             color: 'rgba(233,233,223,0.45)',
